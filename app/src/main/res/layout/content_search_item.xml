@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_medium"
+    android:elevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/strThumb"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/samplethumb" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/strThumb"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/strName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:padding="@dimen/margin_medium"
+                    android:text="Cateogry"
+                    android:textColor="@color/md_500_bluegrey"
+                    android:textSize="@dimen/text_regular_2x"
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
+
+            </RelativeLayout>
+
+            <net.aungpyaephyo.mmtextview.components.MMTextView
+                android:id="@+id/strCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="Adfwerrq"
+                android:textColor="@color/concrete" />
+
+            <net.aungpyaephyo.mmtextview.components.MMTextView
+                android:id="@+id/strDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_small"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="iowjrpwjhrjojovnfgjweojrtojojqowerjon"
+                android:textColor="@color/concrete" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_small"
+                android:gravity="center_vertical"
+                android:padding="@dimen/margin_small">
+
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/contentMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:text="View details"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

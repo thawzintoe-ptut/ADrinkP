@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ptut.adrinkp">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <application
+        android:name=".utils.ADrinkPApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_applogo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="true">
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.CategoryItemActivity" />
+        <activity android:name=".activities.GlassItemActivity"/>
+        <activity android:name=".activities.IngredientItemActivity"/>
+        <activity android:name=".activities.AlcoholItemActivity"/>
+        <activity android:name=".activities.CategoryFilterActivity"/>
+        <activity android:name=".activities.SearchCocktailActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.SearchCocktailDetailActivity"/>
+    </application>
+
+</manifest>

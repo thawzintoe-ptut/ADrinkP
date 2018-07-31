@@ -1,0 +1,33 @@
+<resources>
+
+    <!-- Base application theme. -->
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:typeface">serif</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
+        <item name="android:textColorPrimary">@color/md_500_bluegrey</item>
+        <item name="cardViewStyle">@style/CardView</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+    </style>
+
+    <style name="SearchViewTheme" parent="Widget.AppCompat.Light.SearchView">
+        <item name="android:textColorHint">@color/silver</item>
+    </style>
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@android:color/white</item>
+    </style>
+
+
+</resources>

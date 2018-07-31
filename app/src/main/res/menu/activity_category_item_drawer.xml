@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_category"
+            android:icon="@drawable/menu_category"
+            android:title="Categories" />
+        <item
+            android:id="@+id/nav_glass"
+            android:icon="@drawable/menu_glass"
+            android:title="Glasses" />
+        <item
+            android:id="@+id/nav_ingredient"
+            android:icon="@drawable/menu_ingredient"
+            android:title="Ingredients" />
+        <item
+            android:id="@+id/nav_alcohol"
+            android:icon="@drawable/menu_alcohol"
+            android:title="Alcohol Filters" />
+    </group>
+
+    <item android:title="Help">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_random"
+                android:icon="@drawable/menu_random"
+                android:title="Random Drink" />
+        </menu>
+    </item>
+
+</menu>

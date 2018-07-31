@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="greensea">#16a085</color>
+    <color name="turquoise">#1abc9c</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="midnightblue">#2c3e50</color>
+    <color name="sunflower">#f1c40f</color>
+
+    <color name="orange">#f39c12</color>
+    <color name="emerald">#2ecc71</color>
+    <color name="nephritis">#27ae60</color>
+    <color name="carrot">#e67e22</color>
+    <color name="pumpkin">#d35400</color>
+    <color name="peteriver">#3498db</color>
+    <color name="belizehole">#2980b9</color>
+    <color name="alizarin">#e74c3c</color>
+    <color name="pomergranate">#c0392b</color>
+    <color name="amethist">#9b59b6</color>
+    <color name="wisteria">#8e44ad</color>
+    <color name="clouds">#ecf0f1</color>
+    <color name="silver">#bdc3c7</color>
+    <color name="wetasphalt">#34495e</color>
+    <color name="concrete">#95a5a6</color>
+    <color name="brown">#795548</color>
+    <color name="blue">#2962FF</color>
+
+    <color name="color_log_in">#94019c8f</color>
+    <color name="color_sign_up">#5474bcfa</color>
+    <color name="color_logo_log_in">#b4faf5</color>
+    <color name="color_logo_sign_up">#bbc4fd</color>
+    <color name="color_label">#ededed</color>
+    <color name="white_transparent">#fafafa</color>
+    <color name="color_input_hint">#FFF</color>
+    <color name="color_text_highlight">#fafafa</color>
+    <color name="color_text">#A39D9D</color>
+    <color name="md_500_bluegrey">#607d8b</color>
+    <color name="md_700_bluegrey">#455A64</color>
+    <color name="md_100_bluegrey">#ECEFF1</color>
+
+    <integer-array name="androidcolors">
+        <item>@color/blue</item>
+        <item>@color/orange</item>
+        <item>@color/greensea</item>
+        <item>@color/orange</item>
+        <item>@color/wisteria</item>
+        <item>@color/pumpkin</item>
+        <item>@color/pomergranate</item>
+        <item>@color/carrot</item>
+        <item>@color/belizehole</item>
+        <item>@color/alizarin</item>
+    </integer-array>
+
+
+</resources>

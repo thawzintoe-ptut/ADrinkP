@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_100_bluegrey"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.CategoryItemActivity"
+    tools:showIn="@layout/app_bar_category_item">
+
+    <!--<View-->
+    <!--android:id="@+id/view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0.5dp"-->
+    <!--android:background="@color/md_500_bluegrey"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.example.ptut.adrinkp.components.SmartRecyclerView
+                android:id="@+id/itemRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/emptyLayout"
+                layout="@layout/view_pod_empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/itemRecycler"
+                android:visibility="gone"/>
+        </RelativeLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</android.support.constraint.ConstraintLayout>

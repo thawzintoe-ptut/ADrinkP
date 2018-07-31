@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ADrinkP</string>
+    <string name="title_activity_category_item">CategoryItemActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Cocktail Preview</string>
+    <string name="nav_header_subtitle">Sponsored by TheCockTailDB </string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="searchCocktailHint">Search Cocktail</string>
+    <string name="searchIngredientHint">Search Ingredients</string>
+    <string name="strInstruction">Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it.</string>
+</resources>

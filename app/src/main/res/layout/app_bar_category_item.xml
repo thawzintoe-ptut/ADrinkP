@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CategoryItemActivity"
+    android:background="@color/white">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:minHeight="?attr/actionBarSize"
+            android:background="@color/alizarin">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cateogries"
+                android:layout_marginEnd="@dimen/margin_xlarge"
+                android:gravity="start"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_heading_1x"
+                android:id="@+id/toolbar_title" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_category_item" />
+
+
+</android.support.design.widget.CoordinatorLayout>
