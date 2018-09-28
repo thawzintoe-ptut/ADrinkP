@@ -1,305 +1,370 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:showIn="@layout/activity_search_detail"
+    android:fitsSystemWindows="true"
+    app:behavior_overlapTop="30dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    <LinearLayout
+
+    <io.supercharge.shimmerlayout.ShimmerLayout
+        android:id="@+id/shimmerLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginEnd="@dimen/margin_medium"
-        android:layout_marginStart="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:layout_marginBottom="@dimen/margin_large">
-        <!--<net.aungpyaephyo.mmtextview.components.MMTextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Cocktail"-->
-            <!--android:textSize="@dimen/text_regular_3x"-->
-            <!--android:textColor="@color/md_500_bluegrey"-->
-            <!--android:textStyle="bold"/>-->
-        <net.aungpyaephyo.mmtextview.components.MMTextView
-            android:id="@+id/detailCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:text="Original Drink"/>
-        <net.aungpyaephyo.mmtextview.components.MMTextView
-            android:id="@+id/detailIBA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:text="Contempory classics"/>
-        <net.aungpyaephyo.mmtextview.components.MMTextView
-            android:id="@+id/detailDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_date"
-            android:gravity="center"
-            android:drawablePadding="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:text="August 14 2018"/>
-        <RelativeLayout
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_medium">
-            <net.aungpyaephyo.mmtextview.components.MMTextView
-                android:id="@+id/detailAlcoholic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_bg"
-                android:padding="@dimen/margin_medium"
-                android:backgroundTint="@color/alizarin"
-                android:textColor="@color/white"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:text="Original Drink"/>
-            <net.aungpyaephyo.mmtextview.components.MMTextView
-                android:id="@+id/detailGlass"
-                android:layout_width="wrap_content"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardElevation="@dimen/margin_small">
+
+                <RelativeLayout
+                    android:id="@+id/showTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_medium">
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/detailCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_heading_1x"
+                        android:textStyle="bold"
+                        android:layout_marginStart="@dimen/margin_small"
+                        app:fontFamily="sans-serif-medium" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/detailIBA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/detailCategory"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:drawableStart="@drawable/ic_cafe"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"/>
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/detailDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/detailIBA"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:drawableStart="@drawable/ic_access_time"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_small" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/detailDate"
+                        android:layout_marginTop="@dimen/margin_medium">
+
+                        <net.aungpyaephyo.mmtextview.components.MMTextView
+                            android:id="@+id/detailAlcoholic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:background="@drawable/border_bg"
+                            android:backgroundTint="@color/alizarin"
+                            android:padding="@dimen/margin_medium"
+                            android:textColor="@color/white" />
+
+                        <net.aungpyaephyo.mmtextview.components.MMTextView
+                            android:id="@+id/detailGlass"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_medium"
+                            android:layout_marginTop="@dimen/margin_medium"
+                            android:layout_toEndOf="@+id/detailAlcoholic"
+                            android:background="@drawable/border_bg"
+                            android:backgroundTint="@color/turquoise"
+                            android:padding="@dimen/margin_medium"
+                            android:textColor="@color/white" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/detailAlcoholic"
-                android:background="@drawable/border_bg"
-                android:padding="@dimen/margin_medium"
-                android:backgroundTint="@color/orange"
-                android:textColor="@color/white"
-                android:layout_marginStart="@dimen/margin_large"
-                android:layout_marginTop="@dimen/margin_medium"
-                android:text="Glass"/>
-        </RelativeLayout>
-        <net.aungpyaephyo.mmtextview.components.MMTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_large"
-            android:text="Instructions"
-            android:textColor="@color/belizehole"
-            android:textStyle="bold"/>
-        <net.aungpyaephyo.mmtextview.components.MMTextView
-            android:id="@+id/detailInstruction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:text="@string/strInstruction"
-            android:lineSpacingMultiplier="1.3"
-            android:layout_marginEnd="@dimen/margin_medium"/>
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stretchColumns="2"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:gravity="center_horizontal">
-            <TableRow>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_small"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardElevation="@dimen/margin_small">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_medium">
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/instructionTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Instruction"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_regular_2x"
+                        android:textStyle="bold" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/detailInstruction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/instructionTitle"
+                        android:layout_marginEnd="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="start"
+                        android:lineSpacingMultiplier="1.2"
+                        android:textAlignment="viewStart"
+                        android:textSize="@dimen/text_regular" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_small"
+                android:elevation="@dimen/margin_small"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textStyle="bold"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:textColor="@color/alizarin"
-                    android:text="Ingredient"/>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textColor="@color/carrot"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:text="Measure"
-                    android:paddingStart="@dimen/margin_large"/>
-            </TableRow>
-            <TableRow>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strIngredient1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_ingredient"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:text="Ingredient"/>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strMeasure1"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_gradient"
-                    android:text="Measure"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:paddingStart="@dimen/margin_large"/>
-            </TableRow>
-            <TableRow>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strIngredient2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_ingredient"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:text="Ingredient"/>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strMeasure2"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_gradient"
-                    android:text="Measure"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:paddingStart="@dimen/margin_large"/>
-            </TableRow>
-            <TableRow>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strIngredient3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_ingredient"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:text="Ingredient"/>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strMeasure3"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_gradient"
-                    android:text="Measure"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:paddingStart="@dimen/margin_large"/>
-            </TableRow>
-            <TableRow>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strIngredient4"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_ingredient"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:text="Ingredient"/>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strMeasure4"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_gradient"
-                    android:text="Measure"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:paddingStart="@dimen/margin_large"/>
-            </TableRow>
-            <TableRow>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strIngredient5"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_ingredient"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:text="Ingredient"/>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strMeasure5"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_gradient"
-                    android:text="Measure"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:paddingStart="@dimen/margin_large"/>
-            </TableRow>
-            <TableRow>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strIngredient6"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_ingredient"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:text="Ingredient"/>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strMeasure6"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_gradient"
-                    android:text="Measure"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:paddingStart="@dimen/margin_large"/>
-            </TableRow>
-            <TableRow>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strIngredient7"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_ingredient"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:text="Ingredient"/>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strMeasure7"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_gradient"
-                    android:text="Measure"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:paddingStart="@dimen/margin_large"/>
-            </TableRow>
-            <TableRow>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strIngredient8"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_ingredient"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:text="Ingredient"/>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strMeasure8"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_gradient"
-                    android:text="Measure"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:paddingStart="@dimen/margin_large"/>
-            </TableRow>
-            <TableRow>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strIngredient9"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableStart="@drawable/ic_ingredient"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:text="Ingredient"/>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/strMeasure9"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_gradient"
-                    android:text="Measure"
-                    android:drawablePadding="@dimen/margin_small"
-                    android:paddingStart="@dimen/margin_large"/>
-            </TableRow>
-        </TableLayout>
-    </LinearLayout>
+                    android:layout_weight="1.3"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margin_medium">
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:paddingStart="@dimen/margin_small"
+                        android:text="Ingredients"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_regular_2x"
+                        android:textStyle="bold" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strIngredient1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:drawableStart="@drawable/ic_ingredient"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular"
+                        android:visibility="gone" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strIngredient2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:drawableStart="@drawable/ic_ingredient"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular"
+                        android:visibility="gone" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strIngredient3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:drawableStart="@drawable/ic_ingredient"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular"
+                        android:visibility="gone" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strIngredient4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:drawableStart="@drawable/ic_ingredient"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular"
+                        android:visibility="gone" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strIngredient5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:drawableStart="@drawable/ic_ingredient"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular"
+                        android:visibility="gone" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strIngredient6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:drawableStart="@drawable/ic_ingredient"
+                        android:fontFamily="sans-serif-medium"
+                        android:visibility="gone" />
 
 
-</ScrollView>
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strIngredient7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:drawableStart="@drawable/ic_ingredient"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular"
+                        android:visibility="gone" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strIngredient8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:drawableStart="@drawable/ic_ingredient"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular"
+                        android:visibility="gone" />
+
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strIngredient9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/margin_small"
+                        android:drawableStart="@drawable/ic_ingredient"
+                        android:fontFamily="sans-serif-medium"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margin_medium">
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/text_regular"
+                        android:textStyle="bold" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strMeasure1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strMeasure2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strMeasure3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strMeasure4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strMeasure5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strMeasure6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strMeasure7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strMeasure8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/strMeasure9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="@dimen/text_regular" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </io.supercharge.shimmerlayout.ShimmerLayout>
+
+</android.support.v4.widget.NestedScrollView>

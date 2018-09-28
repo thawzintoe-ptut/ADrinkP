@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.ptut.adrinkp.components.EmptyViewPod xmlns:android="http://schemas.android.com/apk/res/android"
+<com.thawzintoe.ptut.adrinkp.components.EmptyViewPod xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="@color/white">
+    <TextView
+        android:id="@+id/emptyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ivEmpty"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:text="Oops, something went wrong"/>
 
     <ImageView
         android:id="@+id/ivEmpty"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/empty_list"
+        android:src="@drawable/nointernet"
+        android:background="@color/clouds"
+        android:scaleType="centerCrop"
         android:layout_centerInParent="true"
         />
 
@@ -18,7 +30,7 @@
         android:layout_height="wrap_content"
         android:text="No Data"
         android:textStyle="bold"
-        android:textSize="@dimen/text_heading_2x"
+        android:textSize="@dimen/text_regular_3x"
         android:layout_below="@id/ivEmpty"
         android:textColor="@color/md_500_bluegrey"
         android:layout_marginTop="@dimen/margin_large"
@@ -32,10 +44,10 @@
         android:textStyle="italic"
         android:textSize="@dimen/text_regular"
         android:layout_below="@id/tvEmpty"
-        android:textColor="@color/md_500_bluegrey"
         android:layout_marginTop="@dimen/margin_small"
+
         android:layout_centerHorizontal="true"
         />
 
 
-</com.example.ptut.adrinkp.components.EmptyViewPod>
+</com.thawzintoe.ptut.adrinkp.components.EmptyViewPod>

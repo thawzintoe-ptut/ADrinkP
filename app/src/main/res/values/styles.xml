@@ -13,13 +13,36 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:typeface">serif</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_backpress</item>
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <!--<item name="android:windowActionBarOverlay">true</item>-->
+        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
+        <item name="cardViewStyle">@style/CardView</item>
+        <!--<item name="android:windowContentTransitions">true</item>-->
+        <!--<item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
+    </style>
+    
+    <style name="CocktailListView" parent="AppTheme">
+        <item name="android:windowReenterTransition">@android:transition/slide_top</item>
+    </style>
+    <style name="Home" parent="AppTheme">
+        <item name="android:windowEnterTransition">@android:transition/slide_top</item>
+    </style>
+    <style name="Go" parent="AppTheme">
+        <item name="android:windowEnterTransition">@android:transition/slide_left</item>
+        <item name="android:windowReenterTransition">@android:transition/slide_right</item>
+    </style>
+
+
+    <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:typeface">serif</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowActionBarOverlay">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
-        <item name="android:textColorPrimary">@color/md_500_bluegrey</item>
         <item name="cardViewStyle">@style/CardView</item>
-        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <!--<item name="android:windowContentTransitions">true</item>-->
+        <!--<item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
     </style>
 
     <style name="SearchViewTheme" parent="Widget.AppCompat.Light.SearchView">
@@ -28,6 +51,10 @@
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@android:color/white</item>
     </style>
+
+
+
+
 
 
 </resources>

@@ -4,44 +4,77 @@
     android:id="@+id/searchLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/margin_large"
     android:background="@color/white"
     tools:context=".activities.SearchCocktailActivity">
+
     <LinearLayout
         android:id="@+id/searchToolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/alizarin"
-        android:orientation="horizontal">
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
             android:id="@+id/ivBack"
-            android:layout_width="44dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/ic_backpress"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
             android:background="@drawable/ripple_primary"
+            android:src="@drawable/ic_backpress"
+            android:visibility="gone"
+            android:tint="@color/black_light"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"/>
-
-        <EditText
-            android:id="@+id/searchEdit"
+            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_medium"
-            android:drawableStart="@drawable/oridinarydrink"
-            android:background="@drawable/border_bg"
-            android:drawablePadding="@dimen/margin_medium"
-            android:inputType="text"
+            android:weightSum="3"
             android:padding="@dimen/margin_medium"
-            android:textColorHint="@color/silver"
-            android:theme="@style/SearchViewTheme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivBack"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="LabelFor" />
+            android:layout_margin="@dimen/margin_small"
+            android:background="@drawable/search_bg">
+            <EditText
+                android:id="@+id/searchEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:layout_gravity="bottom"
+                android:layout_weight="3"
+                android:background="@color/white"
+                android:padding="@dimen/margin_small"
+                android:textSize="@dimen/text_regular_2x"
+                android:fontFamily="sans-serif-medium"
+                tools:ignore="LabelFor" />
+
+            <ImageView
+                android:id="@+id/searchClear"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.1"
+                android:elevation="@dimen/margin_small"
+                android:padding="@dimen/margin_medium"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:scaleType="centerCrop"
+                android:tint="@color/blue"
+                android:src="@drawable/ic_clear"/>
+        </LinearLayout>
+
     </LinearLayout>
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/silver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchToolbar" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeContainer"
@@ -49,17 +82,18 @@
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchToolbar">
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintVertical_bias="0.0">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.example.ptut.adrinkp.components.SmartRecyclerView
+            <com.thawzintoe.ptut.adrinkp.components.SmartRecyclerView
                 android:id="@+id/searchRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

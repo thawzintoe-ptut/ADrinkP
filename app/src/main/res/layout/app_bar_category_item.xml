@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/margin_large"
     tools:context=".activities.CategoryItemActivity"
     android:background="@color/white">
 
@@ -17,18 +18,18 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:minHeight="?attr/actionBarSize"
-            android:background="@color/alizarin">
+            android:gravity="center"
+            android:background="@drawable/border_bg">
 
 
             <TextView
+                android:id="@+id/toolbar_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
                 android:text="Cateogries"
-                android:layout_marginEnd="@dimen/margin_xlarge"
-                android:gravity="start"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_heading_1x"
-                android:id="@+id/toolbar_title" />
+                android:textColor="@color/black_light"
+                android:textSize="18sp"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

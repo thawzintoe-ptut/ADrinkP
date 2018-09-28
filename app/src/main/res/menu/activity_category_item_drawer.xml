@@ -2,6 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
+    <item android:title="Search">
+        <menu>
+            <item
+                android:id="@+id/nav_search"
+                android:icon="@drawable/ic_search_black"
+                android:title="Search Cocktail" />
+        </menu>
+    </item>
 
     <group android:checkableBehavior="single">
         <item
@@ -22,12 +30,8 @@
             android:title="Alcohol Filters" />
     </group>
 
-    <item android:title="Help">
+    <item android:title="Setting">
         <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
             <item
                 android:id="@+id/nav_random"
                 android:icon="@drawable/menu_random"

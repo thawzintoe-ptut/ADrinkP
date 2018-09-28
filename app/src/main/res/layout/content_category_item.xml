@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootLayout"
+    android:transitionName="layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_100_bluegrey"
+    android:background="@color/white"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.CategoryItemActivity"
     tools:showIn="@layout/app_bar_category_item">
@@ -32,9 +33,10 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
 
-            <com.example.ptut.adrinkp.components.SmartRecyclerView
+            <com.thawzintoe.ptut.adrinkp.components.SmartRecyclerView
                 android:id="@+id/itemRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
