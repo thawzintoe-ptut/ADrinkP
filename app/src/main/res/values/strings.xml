@@ -12,4 +12,8 @@
     <string name="searchIngredientHint">Search Ingredients</string>
     <string name="strInstruction">Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it.</string>
     <string name="sponsored_by_the_cocktaildb">Sponsored by The CocktailDB</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
