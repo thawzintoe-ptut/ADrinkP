@@ -7,25 +7,27 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.bumptech.glide.Glide
 import com.thawzintoe.ptut.adrinkp.R
 import com.thawzintoe.ptut.adrinkp.activities.base.BaseActivity
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
+import com.thawzintoe.ptut.adrinkp.components.ImageRequester
 import com.thawzintoe.ptut.adrinkp.mvp.presenters.RandomPresenter
 import com.thawzintoe.ptut.adrinkp.mvp.views.RandomView
 import com.thawzintoe.ptut.adrinkp.utils.EmptyError
 import com.thawzintoe.ptut.adrinkp.utils.Error
 import com.thawzintoe.ptut.adrinkp.utils.NetworkError
-import com.thawzintoe.ptut.adrinkp.utils.showNetworkError
 import com.thawzintoe.ptut.adrinkp.vos.randomList.RandomDrinksItem
 import kotlinx.android.synthetic.main.activity_search_detail.*
-import kotlinx.android.synthetic.main.content_category_item.*
 import kotlinx.android.synthetic.main.content_search_detail.*
 
 @SuppressLint("Registered")
 class RandomDrinkActivity :BaseActivity(),RandomView{
-    private lateinit var mRandomPresenter:RandomPresenter
-    private var emptyViewPod:EmptyViewPod?=null
+    private  val mRandomPresenter:RandomPresenter by lazy {
+        ViewModelProviders.of(this).get(RandomPresenter::class.java)
+    }
+    private val emptyViewPod  by lazy{
+        emptyDetail as EmptyViewPod
+    }
     companion object {
         fun newIntent(context: Context): Intent {
             return Intent(context, RandomDrinkActivity::class.java)
@@ -42,7 +44,7 @@ class RandomDrinkActivity :BaseActivity(),RandomView{
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = ""
         shimmerLayout.startShimmerAnimation()
-        mRandomPresenter=ViewModelProviders.of(this).get(RandomPresenter::class.java)
+
         mRandomPresenter.initPresenter(this)
         mRandomPresenter.onNotifyRandom()
         mRandomPresenter.errorLD.observe(this,this)
@@ -53,9 +55,7 @@ class RandomDrinkActivity :BaseActivity(),RandomView{
     }
     private fun setUpComponent(randomDrink:RandomDrinksItem) {
         shimmerLayout.stopShimmerAnimation()
-        Glide.with(applicationContext)
-                .load(randomDrink.strDrinkThumb)
-                .into(strThumb)
+        ImageRequester.setImageFromUrl(strThumb,randomDrink.strDrinkThumb!!)
         detailCategory.text = randomDrink.strDrink
         detailIBA.text=randomDrink.strCategory
         detailDate.text = randomDrink.dateModified
@@ -63,11 +63,11 @@ class RandomDrinkActivity :BaseActivity(),RandomView{
         detailGlass.text = randomDrink.strGlass
         detailInstruction.text = randomDrink.strInstructions
 
-        chceckIngredient(randomDrink)
+        checkIngredient(randomDrink)
         checkMeasure(randomDrink)
     }
 
-    private fun chceckIngredient(searchDrinksItem: RandomDrinksItem) {
+    private fun checkIngredient(searchDrinksItem: RandomDrinksItem) {
         if (!searchDrinksItem.strIngredient1.isNullOrEmpty()) {
             strIngredient1.visibility = View.VISIBLE
             strIngredient1.text = searchDrinksItem.strIngredient1
@@ -148,17 +148,12 @@ class RandomDrinkActivity :BaseActivity(),RandomView{
         error?.let {
             when (it) {
                 is EmptyError -> {
-                    emptyViewPod=emptyDetail as EmptyViewPod
-                    emptyViewPod?.setEmptyData(R.drawable.empty_img,"Product Not Found")
-                    emptyDetail.setBackgroundColor(resources.getColor(R.color.white))
+                    emptyViewPod.setEmptyData(R.drawable.empty_img,"Product Not Found")
                     emptyDetail.visibility = View.VISIBLE
                 }
                 is NetworkError ->{
-                    emptyViewPod=emptyDetail as EmptyViewPod
-                    emptyDetail.setBackgroundColor(resources.getColor(R.color.white))
-                    emptyViewPod?.setEmptyData(R.drawable.nointernet,"No Internet Connection")
+                    emptyViewPod.setEmptyData(R.drawable.nointernet,"No Internet Connection")
                     emptyDetail.visibility = View.VISIBLE
-                    showNetworkError(searchDetailLayout, applicationContext, error as NetworkError)
                 }
             }
         }

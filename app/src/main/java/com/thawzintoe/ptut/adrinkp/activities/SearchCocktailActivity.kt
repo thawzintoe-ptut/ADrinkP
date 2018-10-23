@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
-import android.support.v7.widget.LinearLayoutManager
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -23,6 +22,7 @@ import com.thawzintoe.ptut.adrinkp.mvp.views.SearchView
 import com.thawzintoe.ptut.adrinkp.utils.EmptyError
 import com.thawzintoe.ptut.adrinkp.utils.Error
 import com.thawzintoe.ptut.adrinkp.utils.NetworkError
+import com.thawzintoe.ptut.adrinkp.utils.setUpRecycler
 import com.thawzintoe.ptut.adrinkp.vos.searchList.SearchDrinksItem
 import kotlinx.android.synthetic.main.activity_search.*
 
@@ -30,9 +30,15 @@ import kotlinx.android.synthetic.main.activity_search.*
 @SuppressLint("Registered")
 class SearchCocktailActivity : BaseActivity(), SearchView, View.OnClickListener {
 
-    private lateinit var searchPresenter: SearchPresenter
-    private lateinit var searchCocktailAdapter: SearchCocktailAdapter
-    private var emptyViewPod: EmptyViewPod? = null
+    private  val searchPresenter: SearchPresenter by lazy{
+        ViewModelProviders.of(this).get(SearchPresenter::class.java)
+    }
+    private val searchCocktailAdapter: SearchCocktailAdapter by lazy{
+        SearchCocktailAdapter(this@SearchCocktailActivity, searchPresenter)
+    }
+    private val emptyViewPod: EmptyViewPod? by lazy{
+        searchEmptyLayout as EmptyViewPod
+    }
 
     companion object {
         fun newIntent(context: Context): Intent {
@@ -55,31 +61,23 @@ class SearchCocktailActivity : BaseActivity(), SearchView, View.OnClickListener 
     }
 
     private fun setUpUIComponent() {
-        searchPresenter = ViewModelProviders.of(this).get(SearchPresenter::class.java)
-        searchPresenter.initPresenter(this@SearchCocktailActivity)
-        searchRecycler.layoutManager = LinearLayoutManager(this@SearchCocktailActivity)
-        searchCocktailAdapter = SearchCocktailAdapter(this@SearchCocktailActivity, searchPresenter)
+        searchPresenter.initPresenter(this)
+
+        searchRecycler.setUpRecycler(applicationContext,emptyViewPod!!)
         searchRecycler.adapter = searchCocktailAdapter
+
         ivBack.setOnClickListener(this@SearchCocktailActivity)
     }
 
     override fun onChanged(error: Error?) {
         error?.let {
+            swipeContainer.isRefreshing = false
             when (it) {
                 is EmptyError -> {
-                    emptyViewPod = searchEmptyLayout as EmptyViewPod
                     emptyViewPod!!.setEmptyData(R.drawable.empty_img, "Product Not Found")
-                    searchEmptyLayout.setBackgroundColor(resources.getColor(R.color.white))
-                    swipeContainer.isRefreshing = false
-                    searchEmptyLayout.visibility = View.VISIBLE
-                    searchRecycler.setEmptyView(searchEmptyLayout)
                 }
                 is NetworkError -> {
-                    emptyViewPod = searchEmptyLayout as EmptyViewPod
-                    searchEmptyLayout.setBackgroundColor(resources.getColor(R.color.white))
                     emptyViewPod!!.setEmptyData(R.drawable.nointernet, "No Internet Connection")
-                    searchEmptyLayout.visibility = View.VISIBLE
-                    searchRecycler.setEmptyView(emptyViewPod!!)
                 }
             }
         }

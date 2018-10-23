@@ -6,25 +6,24 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.bumptech.glide.Glide
 import com.thawzintoe.ptut.adrinkp.R
 import com.thawzintoe.ptut.adrinkp.activities.base.BaseActivity
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
+import com.thawzintoe.ptut.adrinkp.components.ImageRequester
 import com.thawzintoe.ptut.adrinkp.mvp.presenters.LookUpPresenter
-import com.thawzintoe.ptut.adrinkp.mvp.presenters.RandomPresenter
 import com.thawzintoe.ptut.adrinkp.mvp.views.LookUpView
-import com.thawzintoe.ptut.adrinkp.mvp.views.RandomView
 import com.thawzintoe.ptut.adrinkp.utils.*
 import com.thawzintoe.ptut.adrinkp.vos.lookUpList.LookUpItem
-import com.thawzintoe.ptut.adrinkp.vos.randomList.RandomDrinksItem
 import kotlinx.android.synthetic.main.activity_search_detail.*
-import kotlinx.android.synthetic.main.content_category_item.*
 import kotlinx.android.synthetic.main.content_search_detail.*
-import java.text.SimpleDateFormat
 
 class LookUpCocktailDetail:BaseActivity(),LookUpView {
-    private lateinit var mLookUpPresenter: LookUpPresenter
-    private var emptyViewPod:EmptyViewPod?=null
+    private val mLookUpPresenter: LookUpPresenter by lazy {
+        ViewModelProviders.of(this).get(LookUpPresenter::class.java)
+    }
+    private val emptyViewPod  by lazy{
+        emptyDetail as EmptyViewPod
+    }
 
     companion object {
         fun newIntent(context: Context,id:String): Intent {
@@ -45,34 +44,30 @@ class LookUpCocktailDetail:BaseActivity(),LookUpView {
         supportActionBar!!.title = ""
         val id=intent.getStringExtra(Detail_ID)
         shimmerLayout.startShimmerAnimation()
-        mLookUpPresenter=ViewModelProviders.of(this).get(LookUpPresenter::class.java)
+
         mLookUpPresenter.initPresenter(this)
         mLookUpPresenter.onNotifyLookUpDetail(id)
         mLookUpPresenter.errorLD.observe(this,this)
         mLookUpPresenter.lookUpLD!!.observe(this, Observer<List<LookUpItem>>{
-
             setUpComponent(it!![0])
         })
 
     }
     private fun setUpComponent(randomDrink:LookUpItem) {
         shimmerLayout.stopShimmerAnimation()
-        Glide.with(applicationContext)
-                .load(randomDrink.strDrinkThumb)
-                .into(strThumb)
+        ImageRequester.setImageFromUrl(strThumb,randomDrink.strDrinkThumb!!)
         detailCategory.text = randomDrink.strDrink
         detailIBA.text=randomDrink.strCategory
         detailDate.text = prettyTime(randomDrink.dateModified!!)
         detailAlcoholic.text = randomDrink.strAlcoholic
         detailGlass.text = randomDrink.strGlass
-//        detailInstruction.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
         detailInstruction.text = randomDrink.strInstructions
 
-        chceckIngredient(randomDrink)
+        checkIngredient(randomDrink)
         checkMeasure(randomDrink)
     }
 
-    private fun chceckIngredient(searchDrinksItem: LookUpItem) {
+    private fun checkIngredient(searchDrinksItem: LookUpItem) {
         if (!searchDrinksItem.strIngredient1.isNullOrEmpty()) {
             strIngredient1.visibility = View.VISIBLE
             strIngredient1.text = searchDrinksItem.strIngredient1
@@ -153,17 +148,12 @@ class LookUpCocktailDetail:BaseActivity(),LookUpView {
         error?.let {
             when (it) {
                 is EmptyError -> {
-                    emptyViewPod=emptyDetail as EmptyViewPod
-                    emptyDetail.setBackgroundColor(resources.getColor(R.color.white))
-                    emptyViewPod!!.setEmptyData(R.drawable.empty_img,"Product Not Found")
+                    emptyViewPod.setEmptyData(R.drawable.empty_img,"Product Not Found")
                     emptyDetail.visibility = View.VISIBLE
                 }
                 is NetworkError ->{
-                    emptyViewPod=emptyDetail as EmptyViewPod
-                    emptyDetail.setBackgroundColor(resources.getColor(R.color.white))
-                    emptyViewPod!!.setEmptyData(R.drawable.nointernet,"No Internet Connection")
+                    emptyViewPod.setEmptyData(R.drawable.nointernet,"No Internet Connection")
                     emptyDetail.visibility = View.VISIBLE
-                    showNetworkError(searchDetailLayout, applicationContext, error as NetworkError)
                 }
             }
         }

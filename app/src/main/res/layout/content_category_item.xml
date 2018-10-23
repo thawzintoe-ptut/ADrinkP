@@ -46,8 +46,7 @@
                 layout="@layout/view_pod_empty"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/itemRecycler"
-                android:visibility="gone"/>
+                android:layout_below="@+id/itemRecycler"/>
         </RelativeLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
 
