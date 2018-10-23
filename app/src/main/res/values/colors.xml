@@ -33,6 +33,9 @@
     <color name="deep_purple">#673ab7</color>
     <color name="pink">#e91e63</color>
 
+    //material color
+    <color name="red_500">#F44336</color>
+
     <color name="color_log_in">#94019c8f</color>
     <color name="color_sign_up">#5474bcfa</color>
     <color name="color_logo_log_in">#b4faf5</color>
