@@ -2,22 +2,33 @@ package com.thawzintoe.ptut.adrinkp.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.support.design.widget.Snackbar
-import android.support.v4.content.ContextCompat
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.ImageView
-import com.bumptech.glide.Glide
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog
 import com.thawzintoe.ptut.adrinkp.R
+import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
+import com.thawzintoe.ptut.adrinkp.components.SmartRecyclerView
+import io.reactivex.schedulers.Schedulers
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.concurrent.Executors
+
+val threadCt = Runtime.getRuntime().availableProcessors() + 1
+val executor = Executors.newFixedThreadPool(threadCt)!!
+val scheduler = Schedulers.from(executor)
 
 
-fun showNetworkError(rootLayout: View, context: Context, error: NetworkError) {
-    Snackbar.make(rootLayout, error.msg, Snackbar.LENGTH_LONG)
-            .setAction("Sorry for not available", null)
-            .setActionTextColor(ContextCompat.getColor(context, R.color.colorAccent)).show()
 
+
+inline fun  SmartRecyclerView.setUpRecycler(context: Context,emptyViewPod: EmptyViewPod){
+    hasFixedSize()
+    layoutManager=LinearLayoutManager(context)
+    setEmptyView(emptyViewPod)
 }
 
 fun randomColor(view: View) {
@@ -30,13 +41,9 @@ fun randomColor(view: View) {
 fun prettyTime(string: String): String {
     val dateFormat = SimpleDateFormat("yyyy-MM-dd kk:mm:ss")
     val date = dateFormat.parse(string)
-    return "${date}"
+    return "$date"
 }
-fun ImageView.load(url: String) {
-    Glide.with(context)
-            .load(url)
-            .into(this)
-}
+
 
 fun profileDialog(context: Context, title: String, desc: String) {
     MaterialStyledDialog.Builder(context)

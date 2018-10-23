@@ -9,10 +9,8 @@ import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import com.thawzintoe.ptut.adrinkp.R
 import com.thawzintoe.ptut.adrinkp.activities.base.BaseActivity
 import com.thawzintoe.ptut.adrinkp.adapters.IngredientItemsAdapter
@@ -21,19 +19,22 @@ import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksIngredient
 import com.thawzintoe.ptut.adrinkp.mvp.presenters.CategoryPresenter
 import com.thawzintoe.ptut.adrinkp.mvp.views.CategoryView
 import com.thawzintoe.ptut.adrinkp.utils.*
-import com.thawzintoe.ptut.adrinkp.components.SmartScrollListener
 import kotlinx.android.synthetic.main.activity_category_item.*
-import kotlinx.android.synthetic.main.activity_search_detail.*
 import kotlinx.android.synthetic.main.app_bar_category_item.*
 import kotlinx.android.synthetic.main.content_category_item.*
 
 @SuppressLint("Registered")
 class IngredientItemActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, CategoryView {
 
-    private lateinit var ingredientItemsAdapter: IngredientItemsAdapter
-    private lateinit var categoryPresenter: CategoryPresenter
-    private var mSmartScrollListener: SmartScrollListener?=null
-    private var emptyViewPod:EmptyViewPod?=null
+    private val categoryPresenter by lazy {
+        ViewModelProviders.of(this).get(CategoryPresenter::class.java)
+    }
+    private val ingredientItemsAdapter by lazy{
+        IngredientItemsAdapter(applicationContext, categoryPresenter)
+    }
+    private val emptyViewPod  by lazy{
+        emptyLayout as EmptyViewPod
+    }
 
     companion object {
         fun newIntent(context: Context): Intent {
@@ -58,18 +59,12 @@ class IngredientItemActivity : BaseActivity(), NavigationView.OnNavigationItemSe
 
     private fun setUpUIComponent() {
         swipeRefreshLayout.isRefreshing=true
-        categoryPresenter = ViewModelProviders.of(this).get(CategoryPresenter::class.java)
         categoryPresenter.initPresenter(this@IngredientItemActivity)
         categoryPresenter.onFinishIngredient("list")
-        itemRecycler.layoutManager = LinearLayoutManager(applicationContext)
-        ingredientItemsAdapter = IngredientItemsAdapter(applicationContext, categoryPresenter)
+
+        itemRecycler.setUpRecycler(applicationContext,emptyViewPod)
         itemRecycler.adapter = ingredientItemsAdapter
-        mSmartScrollListener = SmartScrollListener(object : SmartScrollListener.OnSmartScrollListener {
-            override fun onListEndReach() {
-                categoryPresenter.onFinishIngredient("list")
-            }
-        })
-        itemRecycler.addOnScrollListener(mSmartScrollListener)
+
         swipeRefreshLayout.setOnRefreshListener {
             categoryPresenter.onFinishIngredient("list")
         }
@@ -148,23 +143,13 @@ class IngredientItemActivity : BaseActivity(), NavigationView.OnNavigationItemSe
 
     override fun onChanged(error: Error?) {
         error?.let {
+            swipeRefreshLayout.isRefreshing = false
             when (it) {
                 is EmptyError -> {
-                    swipeRefreshLayout.isRefreshing = false
-                    emptyViewPod=emptyLayout as EmptyViewPod
-                    emptyViewPod!!.setEmptyData(R.drawable.empty_img,"Product Not Found")
-                    emptyDetail.setBackgroundColor(resources.getColor(R.color.white))
-                    emptyLayout.visibility = View.VISIBLE
-                    itemRecycler.setEmptyView(emptyLayout)
+                    emptyViewPod.setEmptyData(R.drawable.empty_img,"Product Not Found")
                 }
                 is NetworkError ->{
-                    swipeRefreshLayout.isRefreshing = false
-                    emptyViewPod=emptyLayout as EmptyViewPod
-                    emptyLayout.setBackgroundColor(resources.getColor(R.color.white))
-                    emptyViewPod!!.setEmptyData(R.drawable.nointernet,"No Internet Connection")
-                    emptyLayout.visibility = View.VISIBLE
-                    itemRecycler.setEmptyView(emptyViewPod!!)
-                    showNetworkError(rootLayout, applicationContext, error as NetworkError)
+                    emptyViewPod.setEmptyData(R.drawable.nointernet,"No Internet Connection")
                 }
             }
         }

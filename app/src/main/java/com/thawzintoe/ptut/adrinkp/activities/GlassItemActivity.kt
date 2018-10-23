@@ -8,10 +8,8 @@ import android.content.Intent
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import com.thawzintoe.ptut.adrinkp.R
 import com.thawzintoe.ptut.adrinkp.activities.base.BaseActivity
 import com.thawzintoe.ptut.adrinkp.adapters.GlassItemsAdapter
@@ -20,26 +18,33 @@ import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksGlass
 import com.thawzintoe.ptut.adrinkp.mvp.presenters.CategoryPresenter
 import com.thawzintoe.ptut.adrinkp.mvp.views.CategoryView
 import com.thawzintoe.ptut.adrinkp.utils.*
-import com.thawzintoe.ptut.adrinkp.components.SmartScrollListener
 import kotlinx.android.synthetic.main.activity_category_item.*
-import kotlinx.android.synthetic.main.activity_search_detail.*
 import kotlinx.android.synthetic.main.app_bar_category_item.*
 import kotlinx.android.synthetic.main.content_category_item.*
 
 
 class GlassItemActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, CategoryView {
-    private lateinit var glassAdapter: GlassItemsAdapter
-    private lateinit var categoryPresenter: CategoryPresenter
-    private var mSmartScrollListener: SmartScrollListener? = null
-    private var emptyViewPod:EmptyViewPod?=null
-    override fun launchFilter(itemName: String) {
-        startActivity(CategoryFilterActivity.newIntent(applicationContext, itemName, GLASS_NAME))
-        overridePendingTransition(R.anim.enter, R.anim.exit)
+
+    private val categoryPresenter by lazy{
+        ViewModelProviders.of(this).get(CategoryPresenter::class.java)
     }
+    private val glassAdapter by lazy {
+        GlassItemsAdapter(applicationContext, categoryPresenter)
+    }
+    private val emptyViewPod  by lazy{
+        emptyLayout as EmptyViewPod
+    }
+
     companion object {
+        private const val GLASS_LIST="list"
         fun newIntent(context: Context): Intent {
             return Intent(context, GlassItemActivity::class.java)
         }
+    }
+
+    override fun launchFilter(itemName: String) {
+        startActivity(CategoryFilterActivity.newIntent(applicationContext, itemName, GLASS_NAME))
+        overridePendingTransition(R.anim.enter, R.anim.exit)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,21 +65,14 @@ class GlassItemActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
     }
     private fun setUpUIComponent() {
         swipeRefreshLayout.isRefreshing=true
-        categoryPresenter = ViewModelProviders.of(this).get(CategoryPresenter::class.java)
         categoryPresenter.initPresenter(this@GlassItemActivity)
-        categoryPresenter.onFinishGlass("list")
+        categoryPresenter.onFinishGlass(GLASS_LIST)
 
-        itemRecycler.layoutManager = LinearLayoutManager(applicationContext)
-        glassAdapter = GlassItemsAdapter(applicationContext, categoryPresenter)
+        itemRecycler.setUpRecycler(applicationContext,emptyViewPod)
         itemRecycler.adapter = glassAdapter
-        mSmartScrollListener = SmartScrollListener(object : SmartScrollListener.OnSmartScrollListener {
-            override fun onListEndReach() {
-                categoryPresenter.onFinishGlass("list")
-            }
-        })
-        itemRecycler.addOnScrollListener(mSmartScrollListener)
+
         swipeRefreshLayout.setOnRefreshListener {
-            categoryPresenter.onFinishGlass("list")
+            categoryPresenter.onFinishGlass(GLASS_LIST)
         }
     }
 
@@ -146,23 +144,13 @@ class GlassItemActivity : BaseActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onChanged(error: Error?) {
         error?.let {
+            swipeRefreshLayout.isRefreshing = false
             when (it) {
                 is EmptyError -> {
-                    swipeRefreshLayout.isRefreshing = false
-                    emptyViewPod=emptyLayout as EmptyViewPod
-                    emptyViewPod!!.setEmptyData(R.drawable.empty_img,"Product Not Found")
-                    emptyDetail.setBackgroundColor(resources.getColor(R.color.white))
-                    emptyLayout.visibility = View.VISIBLE
-                    itemRecycler.setEmptyView(emptyLayout)
+                    emptyViewPod.setEmptyData(R.drawable.empty_img,"Product Not Found")
                 }
                 is NetworkError ->{
-                    swipeRefreshLayout.isRefreshing = false
-                    emptyViewPod=emptyLayout as EmptyViewPod
-                    emptyLayout.setBackgroundColor(resources.getColor(R.color.white))
-                    emptyViewPod!!.setEmptyData(R.drawable.nointernet,"No Internet Connection")
-                    emptyLayout.visibility = View.VISIBLE
-                    itemRecycler.setEmptyView(emptyViewPod!!)
-                    showNetworkError(rootLayout, applicationContext, error as NetworkError)
+                    emptyViewPod.setEmptyData(R.drawable.nointernet,"No Internet Connection")
                 }
             }
         }

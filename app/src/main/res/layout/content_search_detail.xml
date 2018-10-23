@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
@@ -40,9 +41,8 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_heading_1x"
-                        android:textStyle="bold"
                         android:layout_marginStart="@dimen/margin_small"
-                        app:fontFamily="sans-serif-medium" />
+                        app:fontFamily="@font/quicksand_bold" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
                         android:id="@+id/detailIBA"
@@ -52,7 +52,7 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
                         android:drawableStart="@drawable/ic_cafe"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:gravity="center"/>
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -63,9 +63,9 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
                         android:drawableStart="@drawable/ic_access_time"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:gravity="center"
-                        android:textSize="@dimen/text_small" />
+                        android:textSize="@dimen/text_regular" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -78,6 +78,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_medium"
+                            android:fontFamily="@font/quicksand_medium"
                             android:background="@drawable/border_bg"
                             android:backgroundTint="@color/alizarin"
                             android:padding="@dimen/margin_medium"
@@ -89,6 +90,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/margin_medium"
                             android:layout_marginTop="@dimen/margin_medium"
+                            android:fontFamily="@font/quicksand_medium"
                             android:layout_toEndOf="@+id/detailAlcoholic"
                             android:background="@drawable/border_bg"
                             android:backgroundTint="@color/turquoise"
@@ -119,9 +121,9 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
                         android:text="Instruction"
+                        app:fontFamily="@font/quicksand_bold"
                         android:textColor="@color/blue"
-                        android:textSize="@dimen/text_regular_2x"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/text_regular_3x" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
                         android:id="@+id/detailInstruction"
@@ -130,7 +132,7 @@
                         android:layout_below="@id/instructionTitle"
                         android:layout_marginEnd="@dimen/margin_medium"
                         android:layout_marginTop="@dimen/margin_medium"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:gravity="start"
                         android:lineSpacingMultiplier="1.2"
                         android:textAlignment="viewStart"
@@ -160,8 +162,9 @@
                         android:fontFamily="sans-serif-medium"
                         android:paddingStart="@dimen/margin_small"
                         android:text="Ingredients"
+                        app:fontFamily="@font/quicksand_bold"
                         android:textColor="@color/blue"
-                        android:textSize="@dimen/text_regular_2x"
+                        android:textSize="@dimen/text_regular_3x"
                         android:textStyle="bold" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -171,7 +174,7 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
                         android:drawableStart="@drawable/ic_ingredient"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
                         android:visibility="gone" />
 
@@ -182,7 +185,7 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
                         android:drawableStart="@drawable/ic_ingredient"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
                         android:visibility="gone" />
 
@@ -193,7 +196,7 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
                         android:drawableStart="@drawable/ic_ingredient"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
                         android:visibility="gone" />
 
@@ -204,7 +207,7 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
                         android:drawableStart="@drawable/ic_ingredient"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
                         android:visibility="gone" />
 
@@ -215,7 +218,7 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
                         android:drawableStart="@drawable/ic_ingredient"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
                         android:visibility="gone" />
 
@@ -226,7 +229,7 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
                         android:drawableStart="@drawable/ic_ingredient"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:visibility="gone" />
 
 
@@ -238,7 +241,7 @@
                         android:layout_weight="1"
                         android:drawablePadding="@dimen/margin_small"
                         android:drawableStart="@drawable/ic_ingredient"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
                         android:visibility="gone" />
 
@@ -250,7 +253,7 @@
                         android:layout_weight="1"
                         android:drawablePadding="@dimen/margin_small"
                         android:drawableStart="@drawable/ic_ingredient"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
                         android:visibility="gone" />
 
@@ -263,7 +266,7 @@
                         android:layout_weight="1"
                         android:drawablePadding="@dimen/margin_small"
                         android:drawableStart="@drawable/ic_ingredient"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:visibility="gone" />
                 </LinearLayout>
 
@@ -279,7 +282,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
                         android:textColor="@color/blue"
-                        android:textSize="@dimen/text_regular"
+                        android:textSize="@dimen/text_regular_3x"
                         android:textStyle="bold" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -288,7 +291,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -297,7 +300,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -306,7 +309,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -315,7 +318,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -324,7 +327,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -333,7 +336,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -342,7 +345,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -350,7 +353,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -358,7 +361,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
-                        android:fontFamily="sans-serif-medium"
+                        android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular" />
                 </LinearLayout>
             </LinearLayout>

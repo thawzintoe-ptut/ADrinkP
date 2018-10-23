@@ -27,12 +27,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin_medium"
-                android:fontFamily="san-serif-medium"
+                android:fontFamily="@font/quicksand_bold"
                 android:gravity="center"
                 android:padding="@dimen/margin_medium"
                 android:text="Oridinary drink"
                 android:textColor="@color/black_light"
-                android:textSize="@dimen/text_regular_3x"
+                android:textSize="@dimen/text_heading_1x"
                 android:textStyle="bold"
                 tools:ignore="RtlSymmetry" />
         </android.support.v7.widget.Toolbar>

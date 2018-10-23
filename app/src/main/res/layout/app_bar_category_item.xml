@@ -26,10 +26,10 @@
                 android:id="@+id/toolbar_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/quicksand_bold"
                 android:text="Cateogries"
                 android:textColor="@color/black_light"
-                android:textSize="18sp"/>
+                android:textSize="@dimen/text_heading_1x"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

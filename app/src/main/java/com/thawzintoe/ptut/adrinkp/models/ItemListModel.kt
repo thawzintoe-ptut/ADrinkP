@@ -14,10 +14,12 @@ import com.thawzintoe.ptut.adrinkp.network.response.GetIngredientResponse
 import com.thawzintoe.ptut.adrinkp.utils.EmptyError
 import com.thawzintoe.ptut.adrinkp.utils.Error
 import com.thawzintoe.ptut.adrinkp.utils.NetworkError
+import com.thawzintoe.ptut.adrinkp.utils.scheduler
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.Executors
 
 class ItemListModel private constructor(context: Context) : BaseModel() {
     companion object {
@@ -34,9 +36,11 @@ class ItemListModel private constructor(context: Context) : BaseModel() {
         }
     }
 
+
     fun getDrinkCategoryList(itemName:String,mDrinkItemLD: MutableLiveData<List<DrinksItem>>, mErrorLD: MutableLiveData<Error>) {
         mTheApi.getCategoryList(itemName)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(scheduler)
+                .observeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<GetCategoryResponse> {
                     override fun onComplete() {
@@ -59,7 +63,8 @@ class ItemListModel private constructor(context: Context) : BaseModel() {
     }
     fun getDrinkGlassList(itemName:String,mDrinkItemLD: MutableLiveData<List<DrinksGlass>>, mErrorLD: MutableLiveData<Error>) {
         mTheApi.getGlassList(itemName)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(scheduler)
+                .observeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<GetGlassResponse> {
                     override fun onComplete() {
@@ -82,7 +87,8 @@ class ItemListModel private constructor(context: Context) : BaseModel() {
     }
     fun getIngredientList(itemName:String,mDrinkItemLD: MutableLiveData<List<DrinksIngredient>>, mErrorLD: MutableLiveData<Error>) {
         mTheApi.getIngredientList(itemName)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(scheduler)
+                .observeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<GetIngredientResponse> {
                     override fun onComplete() {
@@ -105,7 +111,8 @@ class ItemListModel private constructor(context: Context) : BaseModel() {
     }
     fun getAlcoholList(itemName:String,mDrinkItemLD: MutableLiveData<List<DrinksAlcohol>>, mErrorLD: MutableLiveData<Error>) {
         mTheApi.getAlcoholList(itemName)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(scheduler)
+                .observeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<GetAlcoholResponse> {
                     override fun onComplete() {

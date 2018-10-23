@@ -8,6 +8,7 @@ import com.thawzintoe.ptut.adrinkp.network.response.GetCategoryFilterResponse
 import com.thawzintoe.ptut.adrinkp.utils.EmptyError
 import com.thawzintoe.ptut.adrinkp.utils.Error
 import com.thawzintoe.ptut.adrinkp.utils.NetworkError
+import com.thawzintoe.ptut.adrinkp.utils.scheduler
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -31,7 +32,8 @@ class FilterModel private constructor(context: Context):BaseModel() {
     fun getCategoryFilterList(itemName:String,mFilterLD:MutableLiveData<List<DrinksCategoryFilter>>
                             ,mErrorLD:MutableLiveData<Error>){
         mTheApi.getFilterItemList(itemName)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(scheduler)
+                .observeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<GetCategoryFilterResponse> {
                     override fun onComplete() {
@@ -54,14 +56,15 @@ class FilterModel private constructor(context: Context):BaseModel() {
                         mErrorLD.value=NetworkError(e.message!!)
                     }
 
-                });
+                })
 
     }
 
     fun getGlassFilterList(itemName: String, mFilterLD: MutableLiveData<List<DrinksCategoryFilter>>,
                            mErrorLD: MutableLiveData<Error>){
         mTheApi.getFilterGlassList(itemName)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(scheduler)
+                .observeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<GetCategoryFilterResponse> {
                     override fun onComplete() {
@@ -84,12 +87,13 @@ class FilterModel private constructor(context: Context):BaseModel() {
                         mErrorLD.value=NetworkError(e.message!!)
                     }
 
-                });
+                })
     }
     fun getIngredientFilterList(itemName: String, mFilterLD: MutableLiveData<List<DrinksCategoryFilter>>,
                            mErrorLD: MutableLiveData<Error>){
         mTheApi.getFilterIngredientList(itemName)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(scheduler)
+                .observeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<GetCategoryFilterResponse> {
                     override fun onComplete() {
@@ -101,7 +105,7 @@ class FilterModel private constructor(context: Context):BaseModel() {
                     }
 
                     override fun onNext(getFilterResponse: GetCategoryFilterResponse) {
-                        if(getFilterResponse.drinks!!.isNotEmpty() && getFilterResponse!=null){
+                        if(getFilterResponse.drinks!!.isNotEmpty()){
                             mFilterLD.value=getFilterResponse.drinks
                         }else{
                             mErrorLD.value=EmptyError("No Data")
@@ -112,12 +116,13 @@ class FilterModel private constructor(context: Context):BaseModel() {
                         mErrorLD.value=NetworkError(e.message!!)
                     }
 
-                });
+                })
     }
     fun getAlcoholFilterList(itemName: String, mFilterLD: MutableLiveData<List<DrinksCategoryFilter>>,
                            mErrorLD: MutableLiveData<Error>){
         mTheApi.getFilterAlcoholList(itemName)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(scheduler)
+                .observeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<GetCategoryFilterResponse> {
                     override fun onComplete() {
@@ -129,7 +134,7 @@ class FilterModel private constructor(context: Context):BaseModel() {
                     }
 
                     override fun onNext(getFilterResponse: GetCategoryFilterResponse) {
-                        if(getFilterResponse.drinks!!.isNotEmpty() && getFilterResponse!=null){
+                        if(getFilterResponse.drinks!!.isNotEmpty()){
                             mFilterLD.value=getFilterResponse.drinks
                         }else{
                             mErrorLD.value=EmptyError("No Data")
@@ -140,7 +145,7 @@ class FilterModel private constructor(context: Context):BaseModel() {
                         mErrorLD.value=NetworkError(e.message!!)
                     }
 
-                });
+                })
     }
 
 
