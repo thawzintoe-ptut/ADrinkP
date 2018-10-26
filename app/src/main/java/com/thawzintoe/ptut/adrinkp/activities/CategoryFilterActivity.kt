@@ -23,13 +23,10 @@ import kotlinx.android.synthetic.main.activity_filter_view.*
 
 @SuppressLint("Registered")
 class CategoryFilterActivity : BaseActivity(), FilterView {
-    private val filterPresenter by lazy {
-        ViewModelProviders.of(this@CategoryFilterActivity).get(FilterPresenter::class.java)
-    }
-    private val categoryFilterAdapter by lazy { CategoryFilterAdapter(applicationContext, filterPresenter) }
-    private val emptyViewPod by lazy {
-        filterEmptyLayout as EmptyViewPod
-    }
+    private val filterPresenter by lazyAndroid { getViewModel<FilterPresenter>() }
+    private val categoryFilterAdapter by lazyAndroid { CategoryFilterAdapter(applicationContext, filterPresenter) }
+    private val emptyViewPod by lazyAndroid {
+        filterEmptyLayout as EmptyViewPod }
 
     companion object {
         fun newIntent(context: Context, filterName: String, from: String): Intent {

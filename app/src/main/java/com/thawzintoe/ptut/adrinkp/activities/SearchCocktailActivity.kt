@@ -19,10 +19,7 @@ import com.thawzintoe.ptut.adrinkp.adapters.SearchCocktailAdapter
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
 import com.thawzintoe.ptut.adrinkp.mvp.presenters.SearchPresenter
 import com.thawzintoe.ptut.adrinkp.mvp.views.SearchView
-import com.thawzintoe.ptut.adrinkp.utils.EmptyError
-import com.thawzintoe.ptut.adrinkp.utils.Error
-import com.thawzintoe.ptut.adrinkp.utils.NetworkError
-import com.thawzintoe.ptut.adrinkp.utils.setUpRecycler
+import com.thawzintoe.ptut.adrinkp.utils.*
 import com.thawzintoe.ptut.adrinkp.vos.searchList.SearchDrinksItem
 import kotlinx.android.synthetic.main.activity_search.*
 
@@ -30,13 +27,13 @@ import kotlinx.android.synthetic.main.activity_search.*
 @SuppressLint("Registered")
 class SearchCocktailActivity : BaseActivity(), SearchView, View.OnClickListener {
 
-    private  val searchPresenter: SearchPresenter by lazy{
-        ViewModelProviders.of(this).get(SearchPresenter::class.java)
+    private  val searchPresenter: SearchPresenter by lazyAndroid{
+       getViewModel<SearchPresenter>()
     }
-    private val searchCocktailAdapter: SearchCocktailAdapter by lazy{
+    private val searchCocktailAdapter: SearchCocktailAdapter by lazyAndroid{
         SearchCocktailAdapter(this@SearchCocktailActivity, searchPresenter)
     }
-    private val emptyViewPod: EmptyViewPod? by lazy{
+    private val emptyViewPod: EmptyViewPod? by lazyAndroid{
         searchEmptyLayout as EmptyViewPod
     }
 
@@ -86,7 +83,7 @@ class SearchCocktailActivity : BaseActivity(), SearchView, View.OnClickListener 
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.ivBack -> {
-                startActivity(CategoryItemActivity.newIntent(applicationContext))
+                startActivity(HomeActivity.newIntent(applicationContext, CATEGORY_INDEX))
                 finish()
             }
             R.id.searchClear -> {

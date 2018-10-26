@@ -15,7 +15,6 @@ class CategoryPresenter: BasePresenter<CategoryView>(),onTapCategoryItem {
     private var mDrinkIngredientLD:MutableLiveData<List<DrinksIngredient>>?=null
     private var mDrinkAlcoholLD:MutableLiveData<List<DrinksAlcohol>>?=null
 
-
     override fun initPresenter(mView: CategoryView) {
         super.initPresenter(mView)
         mDrinkItemLD=MutableLiveData()

@@ -1,18 +1,26 @@
 package com.thawzintoe.ptut.adrinkp.utils
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.DividerItemDecoration
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentTransaction
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
-import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog
+import android.view.ViewGroup
 import com.thawzintoe.ptut.adrinkp.R
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
 import com.thawzintoe.ptut.adrinkp.components.SmartRecyclerView
+import com.thawzintoe.ptut.adrinkp.mvp.presenters.BasePresenter
+import com.thawzintoe.ptut.adrinkp.mvp.views.BaseView
 import io.reactivex.schedulers.Schedulers
 import java.text.SimpleDateFormat
 import java.util.*
@@ -23,13 +31,25 @@ val executor = Executors.newFixedThreadPool(threadCt)!!
 val scheduler = Schedulers.from(executor)
 
 
-
-
-inline fun  SmartRecyclerView.setUpRecycler(context: Context,emptyViewPod: EmptyViewPod){
+fun  SmartRecyclerView.setUpRecycler(context: Context,emptyViewPod: EmptyViewPod){
     hasFixedSize()
     layoutManager=LinearLayoutManager(context)
     setEmptyView(emptyViewPod)
 }
+
+fun <T> lazyAndroid(initializer: () -> T): Lazy<T> = lazy(LazyThreadSafetyMode.NONE, initializer)
+
+inline fun <reified T : ViewModel> Fragment.getViewModel(): T {
+    return ViewModelProviders.of(this)[T::class.java]
+}
+
+inline fun <reified T : ViewModel> FragmentActivity.getViewModel(): T {
+    return ViewModelProviders.of(this)[T::class.java]
+}
+
+
+fun ViewGroup.inflate(layoutId: Int): View = LayoutInflater.from(this.context).inflate(layoutId, this, false)
+
 
 fun randomColor(view: View) {
     val androidColors = view.resources.getIntArray(R.array.androidcolors)
@@ -44,14 +64,15 @@ fun prettyTime(string: String): String {
     return "$date"
 }
 
-
-fun profileDialog(context: Context, title: String, desc: String) {
-    MaterialStyledDialog.Builder(context)
-            .setTitle(title)
-            .setDescription(desc)
-            .setIcon(R.drawable.ic_appicon)
-            .setHeaderDrawable(R.color.midnightblue)
-            .withIconAnimation(true)
-            .setPositiveText("Dismiss")
-            .show()
+inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> FragmentTransaction) {
+    beginTransaction().func().addToBackStack(null).commit()
 }
+
+
+fun AppCompatActivity.replaceFragment( frameId: Int,fragment: Fragment) {
+    supportFragmentManager.inTransaction{replace(frameId, fragment)}
+}
+
+val Context.networkInfo: NetworkInfo? get() =
+    (this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo
+

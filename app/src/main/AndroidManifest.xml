@@ -29,23 +29,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.CategoryItemActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Home" />
-        <activity
-            android:name=".activities.GlassItemActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Go" />
-        <activity
-            android:name=".activities.IngredientItemActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Go" />
-        <activity
-            android:name=".activities.AlcoholItemActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Go" />
-        <activity
             android:name=".activities.CategoryFilterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.HomeActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activities.SearchCocktailActivity">
             <intent-filter>

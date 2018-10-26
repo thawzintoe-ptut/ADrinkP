@@ -13,21 +13,19 @@ import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
 import com.thawzintoe.ptut.adrinkp.components.ImageRequester
 import com.thawzintoe.ptut.adrinkp.mvp.presenters.RandomPresenter
 import com.thawzintoe.ptut.adrinkp.mvp.views.RandomView
-import com.thawzintoe.ptut.adrinkp.utils.EmptyError
-import com.thawzintoe.ptut.adrinkp.utils.Error
-import com.thawzintoe.ptut.adrinkp.utils.NetworkError
+import com.thawzintoe.ptut.adrinkp.utils.*
 import com.thawzintoe.ptut.adrinkp.vos.randomList.RandomDrinksItem
 import kotlinx.android.synthetic.main.activity_search_detail.*
 import kotlinx.android.synthetic.main.content_search_detail.*
 
-@SuppressLint("Registered")
+
 class RandomDrinkActivity :BaseActivity(),RandomView{
-    private  val mRandomPresenter:RandomPresenter by lazy {
-        ViewModelProviders.of(this).get(RandomPresenter::class.java)
-    }
-    private val emptyViewPod  by lazy{
-        emptyDetail as EmptyViewPod
-    }
+
+    private  val mRandomPresenter:RandomPresenter by lazyAndroid {
+        getViewModel<RandomPresenter>() }
+    private val emptyViewPod  by lazyAndroid{
+        emptyDetail as EmptyViewPod }
+
     companion object {
         fun newIntent(context: Context): Intent {
             return Intent(context, RandomDrinkActivity::class.java)

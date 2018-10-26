@@ -1,12 +1,13 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/homeView"
+        android:id="@+id/homeContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?android:attr/actionBarSize"/>
 
     <android.support.design.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -16,15 +17,15 @@
         app:backgroundTint="@color/md_700_bluegrey"
         app:buttonGravity="bottom|top"
         app:fabAlignmentMode="end"
-        app:navigationIcon="@drawable/ic_backpress" />
+        app:navigationIcon="@drawable/ic_menu" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/setWallpaper"
+        android:id="@+id/searchFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_search"
         app:backgroundTint="@color/red_500"
         app:fabSize="normal"
-        app:layout_anchor="@id/bottomAppBar" />
+        app:layout_anchor="@id/bottomAppBar"
+        app:srcCompat="@drawable/ic_search" />
 
 </android.support.design.widget.CoordinatorLayout>

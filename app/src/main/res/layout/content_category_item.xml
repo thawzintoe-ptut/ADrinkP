@@ -11,14 +11,6 @@
     tools:context=".activities.CategoryItemActivity"
     tools:showIn="@layout/app_bar_category_item">
 
-    <!--<View-->
-    <!--android:id="@+id/view"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="0.5dp"-->
-    <!--android:background="@color/md_500_bluegrey"-->
-    <!--app:layout_constraintEnd_toEndOf="parent"-->
-    <!--app:layout_constraintStart_toStartOf="parent"-->
-    <!--app:layout_constraintTop_toTopOf="parent" />-->
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"

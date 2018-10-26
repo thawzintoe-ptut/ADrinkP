@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
-import com.thawzintoe.ptut.adrinkp.activities.CategoryItemActivity
+import com.thawzintoe.ptut.adrinkp.activities.HomeActivity
 
 
 class SplashScreen : AppCompatActivity() {
@@ -28,7 +28,7 @@ class SplashScreen : AppCompatActivity() {
 
     private fun launch() {
         if (!isFinishing) {
-            startActivity(Intent(this@SplashScreen, CategoryItemActivity::class.java))
+            startActivity(Intent(this@SplashScreen, HomeActivity::class.java))
             finish()
         }
     }

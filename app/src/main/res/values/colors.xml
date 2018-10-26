@@ -35,6 +35,9 @@
 
     //material color
     <color name="red_500">#F44336</color>
+    <color name="divider">#BDBDBD</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
 
     <color name="color_log_in">#94019c8f</color>
     <color name="color_sign_up">#5474bcfa</color>
@@ -49,6 +52,7 @@
     <color name="md_700_bluegrey">#455A64</color>
     <color name="md_100_bluegrey">#ECEFF1</color>
     <color name="teal">#009688</color>
+
 
     <integer-array name="androidcolors">
         <item>@color/blue</item>
