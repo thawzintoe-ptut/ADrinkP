@@ -49,7 +49,7 @@
     <color name="color_text_highlight">#fafafa</color>
     <color name="color_text">#A39D9D</color>
     <color name="md_500_bluegrey">#607d8b</color>
-    <color name="md_700_bluegrey">#d32f2f</color>
+    <color name="md_700_bluegrey">#F44336</color>
     <color name="md_100_bluegrey">#ECEFF1</color>
     <color name="teal">#009688</color>
 

@@ -48,6 +48,8 @@
                         android:layout_below="@id/detailCategory"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
+                        android:textColor="@color/black_light"
+                        android:paddingStart="2dp"
                         android:drawableStart="@drawable/ic_cafe"
                         android:fontFamily="@font/quicksand_medium"
                         android:gravity="center"/>
@@ -59,6 +61,7 @@
                         android:layout_below="@id/detailIBA"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
+                        android:textColor="@color/black_light"
                         android:drawableStart="@drawable/ic_access_time"
                         android:fontFamily="@font/quicksand_medium"
                         android:gravity="center"
@@ -128,10 +131,11 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/instructionTitle"
                         android:layout_marginEnd="@dimen/margin_medium"
+                        android:textColor="@color/black_light"
                         android:layout_marginTop="@dimen/margin_medium"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/quicksand"
                         android:gravity="start"
-                        android:lineSpacingMultiplier="1.2"
+                        android:lineSpacingMultiplier="1"
                         android:textAlignment="viewStart"
                         android:textSize="@dimen/text_regular" />
                 </RelativeLayout>
@@ -170,6 +174,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
+                        android:textColor="@color/black_light"
                         android:drawableStart="@drawable/ic_ingredient"
                         android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
@@ -181,6 +186,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
+                        android:textColor="@color/black_light"
                         android:drawableStart="@drawable/ic_ingredient"
                         android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
@@ -192,6 +198,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
+                        android:textColor="@color/black_light"
                         android:drawableStart="@drawable/ic_ingredient"
                         android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
@@ -203,6 +210,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
+                        android:textColor="@color/black_light"
                         android:drawableStart="@drawable/ic_ingredient"
                         android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
@@ -214,6 +222,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
+                        android:textColor="@color/black_light"
                         android:drawableStart="@drawable/ic_ingredient"
                         android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
@@ -225,6 +234,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:drawablePadding="@dimen/margin_small"
+                        android:textColor="@color/black_light"
                         android:drawableStart="@drawable/ic_ingredient"
                         android:fontFamily="@font/quicksand_medium"
                         android:visibility="gone" />
@@ -237,6 +247,7 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
                         android:drawablePadding="@dimen/margin_small"
+                        android:textColor="@color/black_light"
                         android:drawableStart="@drawable/ic_ingredient"
                         android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
@@ -249,6 +260,7 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
                         android:drawablePadding="@dimen/margin_small"
+                        android:textColor="@color/black_light"
                         android:drawableStart="@drawable/ic_ingredient"
                         android:fontFamily="@font/quicksand_medium"
                         android:textSize="@dimen/text_regular"
@@ -262,6 +274,7 @@
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
                         android:drawablePadding="@dimen/margin_small"
+                        android:textColor="@color/black_light"
                         android:drawableStart="@drawable/ic_ingredient"
                         android:fontFamily="@font/quicksand_medium"
                         android:visibility="gone" />
@@ -288,7 +301,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/quicksand"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -297,7 +310,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/quicksand"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -306,7 +319,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/quicksand"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -315,7 +328,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/quicksand"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -324,7 +337,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/quicksand"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -333,7 +346,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/quicksand"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -342,7 +355,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
                         android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/quicksand"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -350,7 +363,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/quicksand"
                         android:textSize="@dimen/text_regular" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -358,7 +371,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_medium"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/quicksand"
                         android:textSize="@dimen/text_regular" />
                 </LinearLayout>
             </LinearLayout>
