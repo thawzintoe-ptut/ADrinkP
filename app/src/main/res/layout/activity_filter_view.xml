@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin_medium"
-                android:fontFamily="san-serif-medium"
+                android:fontFamily="@font/quicksand_bold"
                 android:gravity="center"
                 android:padding="@dimen/margin_medium"
                 android:text="Oridinary drink"

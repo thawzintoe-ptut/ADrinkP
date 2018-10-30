@@ -16,7 +16,7 @@
         <item name="android:homeAsUpIndicator">@drawable/ic_backpress</item>
         <!--<item name="android:windowTranslucentStatus">true</item>-->
         <!--<item name="android:windowActionBarOverlay">true</item>-->
-        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Support.CoordinatorLayout</item>
         <item name="cardViewStyle">@style/CardView</item>
         <!--<item name="android:windowContentTransitions">true</item>-->
         <!--<item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
@@ -39,7 +39,7 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowActionBarOverlay">true</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Support.CoordinatorLayout</item>
         <item name="cardViewStyle">@style/CardView</item>
         <!--<item name="android:windowContentTransitions">true</item>-->
         <!--<item name="drawerArrowStyle">@style/DrawerArrowStyle</item>-->
@@ -51,6 +51,22 @@
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@android:color/white</item>
     </style>
+
+    /*bottomsheet theme*/
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_bottomsheet_fragment</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
 
 
 

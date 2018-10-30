@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.bumptech.glide.Glide
+import com.mmgoogleexpert.ptut.shared.ui.BaseActivity
 import com.thawzintoe.ptut.adrinkp.R
-import com.thawzintoe.ptut.adrinkp.activities.base.BaseActivity
+import com.thawzintoe.ptut.adrinkp.components.ImageRequester
 import com.thawzintoe.ptut.adrinkp.vos.searchList.SearchDrinksItem
 import kotlinx.android.synthetic.main.activity_search_detail.*
 import kotlinx.android.synthetic.main.content_search_detail.*
@@ -32,17 +32,15 @@ class SearchCocktailDetailActivity : BaseActivity() {
         toolbarDetail.setNavigationOnClickListener {
             onBackPressed()
         }
-        shimmerLayout.startShimmerAnimation()
+//        shimmerLayout.startShimmerAnimation()
         searchDrinksItem = (intent.getBundleExtra("DetailBundle").getSerializable("DetailItem") as SearchDrinksItem?)!!
         supportActionBar?.title = ""
-        Glide.with(applicationContext)
-                .load(searchDrinksItem.strDrinkThumb)
-                .into(strThumb)
+        ImageRequester.setImageFromUrl(strThumb,searchDrinksItem.strDrinkThumb!!)
         setUpComponent()
     }
 
     private fun setUpComponent() {
-        shimmerLayout.stopShimmerAnimation()
+//        shimmerLayout.stopShimmerAnimation()
         detailCategory.text = searchDrinksItem.strDrink
         detailIBA.text=searchDrinksItem.strCategory
         detailDate.text = searchDrinksItem.dateModified

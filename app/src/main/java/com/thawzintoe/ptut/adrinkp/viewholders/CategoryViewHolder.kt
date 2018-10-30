@@ -1,9 +1,9 @@
 package com.thawzintoe.ptut.adrinkp.viewholders
 
 import android.view.View
+import com.mmgoogleexpert.ptut.shared.ui.BaseViewHolder
 import com.thawzintoe.ptut.adrinkp.deligate.onTapCategoryItem
 import com.thawzintoe.ptut.adrinkp.utils.randomColor
-import com.thawzintoe.ptut.adrinkp.viewholders.base.BaseViewHolder
 import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksItem
 import kotlinx.android.synthetic.main.view_item_layout.view.*
 

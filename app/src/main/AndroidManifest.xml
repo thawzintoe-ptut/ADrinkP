@@ -1,54 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.thawzintoe.ptut.adrinkp">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".utils.ADrinkPApp"
         android:allowBackup="true"
+        android:appComponentFactory="whateverString"
+        android:fullBackupContent="true"
         android:icon="@drawable/ic_appicon"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:fullBackupContent="true">
-        <activity android:name=".SplashScreen" android:screenOrientation="portrait">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:appComponentFactory">
+        <activity
+            android:name=".SplashScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.CategoryItemActivity" android:theme="@style/Home"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.GlassItemActivity" android:theme="@style/Go"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.IngredientItemActivity" android:theme="@style/Go"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.AlcoholItemActivity" android:theme="@style/Go"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.CategoryFilterActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.SearchCocktailActivity" >
+            android:name=".activities.CategoryFilterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.SearchCocktailActivity">
             <intent-filter>
-                <action android:name="android.intent.action.SEARCH"
-                    android:screenOrientation="portrait"/>
+                <action
+                    android:name="android.intent.action.SEARCH"
+                    android:screenOrientation="portrait" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SearchCocktailDetailActivity"
+        <activity
+            android:name=".activities.SearchCocktailDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".activities.RandomDrinkActivity"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.LookUpCocktailDetail"
-            android:theme="@style/AppTheme"
-            android:screenOrientation="portrait"/>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.RandomDrinkActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.LookUpCocktailDetail"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="c988e75d9299d0e1e73ab2ab85c172e5ac5943a1" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"></activity>
     </application>
 
 </manifest>

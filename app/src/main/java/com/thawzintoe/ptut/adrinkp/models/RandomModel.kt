@@ -2,15 +2,12 @@ package com.thawzintoe.ptut.adrinkp.models
 
 import android.arch.lifecycle.MutableLiveData
 import android.content.Context
-import com.thawzintoe.ptut.adrinkp.models.base.BaseModel
-import com.thawzintoe.ptut.adrinkp.utils.EmptyError
-import com.thawzintoe.ptut.adrinkp.utils.Error
-import com.thawzintoe.ptut.adrinkp.utils.NetworkError
-import com.thawzintoe.ptut.adrinkp.vos.lookUpList.GetLookUpResponse
-import com.thawzintoe.ptut.adrinkp.vos.lookUpList.LookUpItem
+import com.mmgoogleexpert.ptut.shared.data.EmptyError
+import com.mmgoogleexpert.ptut.shared.data.Error
+import com.mmgoogleexpert.ptut.shared.data.NetworkError
+import com.thawzintoe.ptut.adrinkp.utils.scheduler
 import com.thawzintoe.ptut.adrinkp.vos.randomList.RandomDrinkResponse
 import com.thawzintoe.ptut.adrinkp.vos.randomList.RandomDrinksItem
-import com.thawzintoe.ptut.adrinkp.vos.searchList.SearchDrinksItem
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -34,7 +31,8 @@ class RandomModel private constructor(context: Context) : BaseModel() {
 
     fun getRandomDrink(drinkLD: MutableLiveData<List<RandomDrinksItem>>, errorLD: MutableLiveData<Error>) {
         mTheApi.getRandomDrink()
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(scheduler)
+                .observeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<RandomDrinkResponse> {
                     override fun onComplete() {

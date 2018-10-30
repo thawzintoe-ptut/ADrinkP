@@ -3,38 +3,54 @@ package com.thawzintoe.ptut.adrinkp.activities
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
-import android.support.v7.widget.LinearLayoutManager
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import com.thawzintoe.ptut.adrinkp.R
-import com.thawzintoe.ptut.adrinkp.activities.base.BaseActivity
 import com.thawzintoe.ptut.adrinkp.adapters.SearchCocktailAdapter
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
 import com.thawzintoe.ptut.adrinkp.mvp.presenters.SearchPresenter
 import com.thawzintoe.ptut.adrinkp.mvp.views.SearchView
-import com.thawzintoe.ptut.adrinkp.utils.EmptyError
-import com.thawzintoe.ptut.adrinkp.utils.Error
-import com.thawzintoe.ptut.adrinkp.utils.NetworkError
+import com.thawzintoe.ptut.adrinkp.utils.*
 import com.thawzintoe.ptut.adrinkp.vos.searchList.SearchDrinksItem
+import android.view.ViewTreeObserver
+import android.view.ViewAnimationUtils
+import android.view.animation.AccelerateInterpolator
+import com.mmgoogleexpert.ptut.shared.data.EmptyError
+import com.mmgoogleexpert.ptut.shared.data.Error
+import com.mmgoogleexpert.ptut.shared.data.NetworkError
+import com.mmgoogleexpert.ptut.shared.ui.BaseActivity
+import kotlinx.android.synthetic.main.activity_filter_view.*
 import kotlinx.android.synthetic.main.activity_search.*
 
 
 @SuppressLint("Registered")
-class SearchCocktailActivity : BaseActivity(), SearchView, View.OnClickListener {
+open class SearchCocktailActivity : BaseActivity(), SearchView, View.OnClickListener {
 
-    private lateinit var searchPresenter: SearchPresenter
-    private lateinit var searchCocktailAdapter: SearchCocktailAdapter
-    private var emptyViewPod: EmptyViewPod? = null
+    var rootLayout: View? = null
+    private var revealX: Int = 0
+    private var revealY: Int = 0
+
+    private  val searchPresenter: SearchPresenter by lazyAndroid{
+       getViewModel<SearchPresenter>()
+    }
+    private val searchCocktailAdapter: SearchCocktailAdapter by lazyAndroid{
+        SearchCocktailAdapter(this@SearchCocktailActivity, searchPresenter)
+    }
+    private val emptyViewPod: EmptyViewPod? by lazyAndroid{
+        searchEmptyLayout as EmptyViewPod
+    }
 
     companion object {
+        const val EXTRA_CIRCULAR_REVEAL_X = "EXTRA_CIRCULAR_REVEAL_X"
+        const val EXTRA_CIRCULAR_REVEAL_Y = "EXTRA_CIRCULAR_REVEAL_Y"
         fun newIntent(context: Context): Intent {
             return Intent(context, SearchCocktailActivity::class.java)
         }
@@ -43,6 +59,28 @@ class SearchCocktailActivity : BaseActivity(), SearchView, View.OnClickListener 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
+
+        val intent = intent
+
+        if (savedInstanceState == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
+                intent.hasExtra(EXTRA_CIRCULAR_REVEAL_X) &&
+                intent.hasExtra(EXTRA_CIRCULAR_REVEAL_Y)) {
+            searchLayout.visibility = View.INVISIBLE
+            revealX = intent.getIntExtra(EXTRA_CIRCULAR_REVEAL_X, 0)
+            revealY = intent.getIntExtra(EXTRA_CIRCULAR_REVEAL_Y, 0)
+            val viewTreeObserver = searchLayout.viewTreeObserver
+            if (viewTreeObserver.isAlive) {
+                viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+                    override fun onGlobalLayout() {
+                        revealActivity(revealX, revealY)
+                        searchLayout.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    }
+                })
+            }
+        } else {
+            searchLayout.visibility = View.VISIBLE
+        }
+
         searchEdit.hint = resources.getString(R.string.searchCocktailHint)
         initSearch()
         setUpUIComponent()
@@ -55,31 +93,24 @@ class SearchCocktailActivity : BaseActivity(), SearchView, View.OnClickListener 
     }
 
     private fun setUpUIComponent() {
-        searchPresenter = ViewModelProviders.of(this).get(SearchPresenter::class.java)
-        searchPresenter.initPresenter(this@SearchCocktailActivity)
-        searchRecycler.layoutManager = LinearLayoutManager(this@SearchCocktailActivity)
-        searchCocktailAdapter = SearchCocktailAdapter(this@SearchCocktailActivity, searchPresenter)
+
+        searchPresenter.initPresenter(this)
+
+        searchRecycler.setUpRecycler(applicationContext,emptyViewPod!!)
         searchRecycler.adapter = searchCocktailAdapter
+
         ivBack.setOnClickListener(this@SearchCocktailActivity)
     }
 
     override fun onChanged(error: Error?) {
         error?.let {
+            swipeContainer.isRefreshing = false
             when (it) {
                 is EmptyError -> {
-                    emptyViewPod = searchEmptyLayout as EmptyViewPod
                     emptyViewPod!!.setEmptyData(R.drawable.empty_img, "Product Not Found")
-                    searchEmptyLayout.setBackgroundColor(resources.getColor(R.color.white))
-                    swipeContainer.isRefreshing = false
-                    searchEmptyLayout.visibility = View.VISIBLE
-                    searchRecycler.setEmptyView(searchEmptyLayout)
                 }
                 is NetworkError -> {
-                    emptyViewPod = searchEmptyLayout as EmptyViewPod
-                    searchEmptyLayout.setBackgroundColor(resources.getColor(R.color.white))
                     emptyViewPod!!.setEmptyData(R.drawable.nointernet, "No Internet Connection")
-                    searchEmptyLayout.visibility = View.VISIBLE
-                    searchRecycler.setEmptyView(emptyViewPod!!)
                 }
             }
         }
@@ -88,7 +119,7 @@ class SearchCocktailActivity : BaseActivity(), SearchView, View.OnClickListener 
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.ivBack -> {
-                startActivity(CategoryItemActivity.newIntent(applicationContext))
+                startActivity(HomeActivity.newIntent(applicationContext, CATEGORY_INDEX))
                 finish()
             }
             R.id.searchClear -> {
@@ -119,8 +150,9 @@ class SearchCocktailActivity : BaseActivity(), SearchView, View.OnClickListener 
     private fun updateRepoListFromInput() {
         val text = searchEdit.text.toString()
         val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
+        imm.hideSoftInputFromWindow(searchEdit.windowToken, 0)
         swipeContainer.isRefreshing = true
+        swipeContainer.refreshingScheme(this)
         searchCocktailAdapter.clearData()
         searchPresenter.onNotifySearch(text)
         swipeContainer.setOnRefreshListener {
@@ -134,5 +166,23 @@ class SearchCocktailActivity : BaseActivity(), SearchView, View.OnClickListener 
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, imageView, "strImage")
         startActivity(intent, options.toBundle())
     }
+
+    open fun revealActivity(x: Int, y: Int) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val finalRadius = (Math.max(searchLayout.width, searchLayout.height) * 1.1).toFloat()
+
+            // create the animator for this view (the start radius is zero)
+            val circularReveal = ViewAnimationUtils.createCircularReveal(searchLayout, x, y, 0f, finalRadius)
+            circularReveal.duration = 400
+            circularReveal.interpolator = AccelerateInterpolator()
+
+            // make the view visible and start the animation
+            searchLayout.visibility = View.VISIBLE
+            circularReveal.start()
+        } else {
+            finish()
+        }
+    }
+
 
 }

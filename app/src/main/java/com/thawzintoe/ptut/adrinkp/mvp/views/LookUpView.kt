@@ -1,4 +1,6 @@
 package com.thawzintoe.ptut.adrinkp.mvp.views
 
-interface LookUpView:BaseView {
+import com.mmgoogleexpert.ptut.shared.model.BaseView
+
+interface LookUpView: BaseView {
 }

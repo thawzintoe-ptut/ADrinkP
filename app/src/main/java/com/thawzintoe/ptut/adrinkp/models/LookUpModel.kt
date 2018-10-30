@@ -2,9 +2,9 @@ package com.thawzintoe.ptut.adrinkp.models
 
 import android.arch.lifecycle.MutableLiveData
 import android.content.Context
-import com.thawzintoe.ptut.adrinkp.models.base.BaseModel
-import com.thawzintoe.ptut.adrinkp.utils.EmptyError
-import com.thawzintoe.ptut.adrinkp.utils.Error
+import com.mmgoogleexpert.ptut.shared.data.EmptyError
+import com.mmgoogleexpert.ptut.shared.data.Error
+import com.thawzintoe.ptut.adrinkp.utils.scheduler
 import com.thawzintoe.ptut.adrinkp.vos.lookUpList.GetLookUpResponse
 import com.thawzintoe.ptut.adrinkp.vos.lookUpList.LookUpItem
 import io.reactivex.Observer
@@ -29,7 +29,8 @@ class LookUpModel private constructor(context: Context) : BaseModel() {
     }
     fun getLookUpDetail(id: String, mLookUpLD: MutableLiveData<List<LookUpItem>>, errorLD: MutableLiveData<Error>) {
         mTheApi.getLookUp(id)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(scheduler)
+                .observeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe (object : Observer<GetLookUpResponse> {
                     override fun onComplete() {

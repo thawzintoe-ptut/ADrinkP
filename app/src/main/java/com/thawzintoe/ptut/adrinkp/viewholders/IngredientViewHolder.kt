@@ -1,11 +1,11 @@
 package com.thawzintoe.ptut.adrinkp.viewholders
 
 import android.view.View
+import com.mmgoogleexpert.ptut.shared.ui.BaseViewHolder
 import com.thawzintoe.ptut.adrinkp.R
 import com.thawzintoe.ptut.adrinkp.deligate.onTapCategoryItem
 import com.thawzintoe.ptut.adrinkp.utils.randomColor
 import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksIngredient
-import com.thawzintoe.ptut.adrinkp.viewholders.base.BaseViewHolder
 import kotlinx.android.synthetic.main.view_item_layout.view.*
 
 class IngredientViewHolder(itemView: View,private val tapClick: onTapCategoryItem) :

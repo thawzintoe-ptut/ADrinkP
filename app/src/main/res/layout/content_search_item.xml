@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="140dp">
 
-        <ImageView
+        <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/strThumb"
             android:layout_width="125dp"
             android:layout_height="140dp"
@@ -41,7 +41,8 @@
                     android:paddingEnd="@dimen/margin_small"
                     android:paddingStart="@dimen/margin_small"
                     android:textSize="@dimen/text_regular_2x"
-                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/primary_text"
+                    android:fontFamily="@font/quicksand_bold"
                     tools:ignore="RelativeOverlap" />
 
             </RelativeLayout>
@@ -51,11 +52,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_cafe"
+                android:paddingStart="2dp"
                 android:layout_marginStart="@dimen/margin_small"
                 android:drawablePadding="@dimen/margin_small"
                 android:gravity="center_vertical"
+                android:textColor="@color/black_light"
                 android:textSize="@dimen/text_regular"
-                android:fontFamily="sans-serif-medium" />
+                android:fontFamily="@font/quicksand_medium" />
 
             <net.aungpyaephyo.mmtextview.components.MMTextView
                 android:id="@+id/strDesc"
@@ -68,14 +71,15 @@
                 android:maxLines="3"
                 android:textColor="@color/black_light"
                 android:textSize="@dimen/text_small"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="@font/quicksand"
                 android:typeface="normal"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/margin_medium"
-                android:gravity="center_vertical"
+                android:gravity="bottom"
+                android:layout_marginBottom="@dimen/margin_small"
                 android:padding="@dimen/margin_small">
 
                 <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -85,8 +89,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="@dimen/margin_medium"
                     android:text="View details"
-                    android:fontFamily="sans-serif-medium"
-                    android:textColor="@color/blue"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:textColor="@color/md_700_bluegrey"
                     android:textStyle="bold" />
             </RelativeLayout>
 

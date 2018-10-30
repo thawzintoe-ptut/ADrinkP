@@ -1,6 +1,7 @@
 package com.thawzintoe.ptut.adrinkp.mvp.presenters
 
 import android.arch.lifecycle.MutableLiveData
+import com.mmgoogleexpert.ptut.shared.model.BasePresenter
 import com.thawzintoe.ptut.adrinkp.deligate.onTapCategoryItem
 import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksAlcohol
 import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksGlass
@@ -14,7 +15,6 @@ class CategoryPresenter: BasePresenter<CategoryView>(),onTapCategoryItem {
     private var mDrinkGlassLD:MutableLiveData<List<DrinksGlass>>?=null
     private var mDrinkIngredientLD:MutableLiveData<List<DrinksIngredient>>?=null
     private var mDrinkAlcoholLD:MutableLiveData<List<DrinksAlcohol>>?=null
-
 
     override fun initPresenter(mView: CategoryView) {
         super.initPresenter(mView)
