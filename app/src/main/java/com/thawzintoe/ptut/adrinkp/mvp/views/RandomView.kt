@@ -1,4 +1,6 @@
 package com.thawzintoe.ptut.adrinkp.mvp.views
 
-interface RandomView:BaseView {
+import com.mmgoogleexpert.ptut.shared.model.BaseView
+
+interface RandomView: BaseView {
 }

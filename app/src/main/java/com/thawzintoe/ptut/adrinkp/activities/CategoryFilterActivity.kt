@@ -2,7 +2,6 @@ package com.thawzintoe.ptut.adrinkp.activities
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -10,8 +9,11 @@ import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.app.ActivityOptionsCompat
 import android.widget.ImageView
+import com.mmgoogleexpert.ptut.shared.data.EmptyError
+import com.mmgoogleexpert.ptut.shared.data.Error
+import com.mmgoogleexpert.ptut.shared.data.NetworkError
+import com.mmgoogleexpert.ptut.shared.ui.BaseActivity
 import com.thawzintoe.ptut.adrinkp.R
-import com.thawzintoe.ptut.adrinkp.activities.base.BaseActivity
 import com.thawzintoe.ptut.adrinkp.adapters.CategoryFilterAdapter
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
 import com.thawzintoe.ptut.adrinkp.mvp.presenters.FilterPresenter
@@ -26,7 +28,8 @@ class CategoryFilterActivity : BaseActivity(), FilterView {
     private val filterPresenter by lazyAndroid { getViewModel<FilterPresenter>() }
     private val categoryFilterAdapter by lazyAndroid { CategoryFilterAdapter(applicationContext, filterPresenter) }
     private val emptyViewPod by lazyAndroid {
-        filterEmptyLayout as EmptyViewPod }
+        filterEmptyLayout as EmptyViewPod
+    }
 
     companion object {
         fun newIntent(context: Context, filterName: String, from: String): Intent {
@@ -56,6 +59,7 @@ class CategoryFilterActivity : BaseActivity(), FilterView {
 
     private fun onFinishUI(filterName: String, fromFilter: String) {
         swipeRefreshFilter.isRefreshing = true
+        swipeRefreshFilter.refreshingScheme(this)
         filterPresenter.initPresenter(this@CategoryFilterActivity)
         filterPresenter.errorLD.observe(this, this)
         when (fromFilter) {
@@ -65,7 +69,7 @@ class CategoryFilterActivity : BaseActivity(), FilterView {
             INGREDIENT_NAME -> filterPresenter.onFinishIngredientFilter(filterName)
         }
 
-        filterRecycler.setUpRecycler(applicationContext, emptyViewPod)
+        filterRecycler.setUpGrid(applicationContext, emptyViewPod)
         filterRecycler.adapter = categoryFilterAdapter
 
         swipeRefreshFilter.setOnRefreshListener {
@@ -81,7 +85,7 @@ class CategoryFilterActivity : BaseActivity(), FilterView {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun launchDetails(item: DrinksCategoryFilter, imageView: ImageView) {
-        val intent = LookUpCocktailDetail.newIntent(this, item.idDrink!!)
+        val intent = LookUpCocktailDetail.newIntent(this, item.idDrink!!,item.strDrinkThumb!!)
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, imageView, imageView.transitionName)
         startActivity(intent, options.toBundle())
     }
@@ -101,7 +105,9 @@ class CategoryFilterActivity : BaseActivity(), FilterView {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        startActivity(HomeActivity.newIntent(applicationContext, CATEGORY_INDEX))
         overridePendingTransition(R.anim.pop_enter, R.anim.pop_exit)
+        finish()
+
     }
 }

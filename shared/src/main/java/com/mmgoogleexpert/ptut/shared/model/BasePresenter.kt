@@ -1,9 +1,8 @@
-package com.thawzintoe.ptut.adrinkp.mvp.presenters
+package com.mmgoogleexpert.ptut.shared.model
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import com.thawzintoe.ptut.adrinkp.mvp.views.BaseView
-import com.thawzintoe.ptut.adrinkp.utils.Error
+import com.mmgoogleexpert.ptut.shared.data.Error
 
 abstract class BasePresenter<T : BaseView> : ViewModel() {
 

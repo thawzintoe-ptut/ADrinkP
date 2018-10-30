@@ -2,12 +2,13 @@ package com.thawzintoe.ptut.adrinkp.mvp.presenters
 
 import android.arch.lifecycle.MutableLiveData
 import android.widget.ImageView
+import com.mmgoogleexpert.ptut.shared.model.BasePresenter
 import com.thawzintoe.ptut.adrinkp.deligate.onTapFilterItem
 import com.thawzintoe.ptut.adrinkp.vos.filterList.DrinksCategoryFilter
 import com.thawzintoe.ptut.adrinkp.models.FilterModel
 import com.thawzintoe.ptut.adrinkp.mvp.views.FilterView
 
-class FilterPresenter :BasePresenter<FilterView>(),onTapFilterItem{
+class FilterPresenter : BasePresenter<FilterView>(),onTapFilterItem{
 
 
     private lateinit var mCategoryFilterLD:MutableLiveData<List<DrinksCategoryFilter>>

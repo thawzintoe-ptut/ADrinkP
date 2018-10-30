@@ -1,9 +1,9 @@
-package com.thawzintoe.ptut.adrinkp.models.base
+package com.thawzintoe.ptut.adrinkp.models
 
 import android.content.Context
-import com.thawzintoe.ptut.adrinkp.network.ADrinkPService
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import com.thawzintoe.ptut.adrinkp.network.ADrinkPService
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

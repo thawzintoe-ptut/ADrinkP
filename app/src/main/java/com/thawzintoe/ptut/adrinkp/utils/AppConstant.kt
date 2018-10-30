@@ -8,6 +8,7 @@ const val INGREDIENT_NAME = "Filter with Ingredients"
 const val ALCOHOL_NAME = "Filter with Alcoholic"
 const val Filter_FROM = "filterFrom"
 const val Detail_ID = "DetailID"
+const val Detail_IMAGE = "DetailIMAGE"
 const val GLASS_LIST="list"
 const val CATEGORY_INDEX = 0
 const val GLASS_INDEX = 1

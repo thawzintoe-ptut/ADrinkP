@@ -1,16 +1,18 @@
 package com.thawzintoe.ptut.adrinkp.fragments
 
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.mmgoogleexpert.ptut.shared.data.EmptyError
+import com.mmgoogleexpert.ptut.shared.data.Error
+import com.mmgoogleexpert.ptut.shared.data.NetworkError
+import com.mmgoogleexpert.ptut.shared.ui.BaseFragment
 import com.thawzintoe.ptut.adrinkp.R
 import com.thawzintoe.ptut.adrinkp.activities.CategoryFilterActivity
 import com.thawzintoe.ptut.adrinkp.adapters.GlassItemsAdapter
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
-import com.thawzintoe.ptut.adrinkp.fragments.base.BaseFragment
 import com.thawzintoe.ptut.adrinkp.mvp.presenters.CategoryPresenter
 import com.thawzintoe.ptut.adrinkp.mvp.views.CategoryView
 import com.thawzintoe.ptut.adrinkp.utils.*
@@ -58,6 +60,7 @@ class GlassFragment :
     private fun setUpUIComponent() {
         toolbar_title.text= GLASS_NAME
         swipeRefreshLayout.isRefreshing=true
+        swipeRefreshLayout.refreshingScheme(activity)
         categoryPresenter.initPresenter(this)
         categoryPresenter.onFinishGlass(GLASS_LIST)
 

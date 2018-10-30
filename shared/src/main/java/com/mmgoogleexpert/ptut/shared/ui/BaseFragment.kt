@@ -1,4 +1,4 @@
-package com.thawzintoe.ptut.adrinkp.fragments.base
+package com.mmgoogleexpert.ptut.shared.ui
 
 
 import android.arch.lifecycle.Lifecycle.Event
@@ -8,8 +8,7 @@ import android.arch.lifecycle.LifecycleRegistry
 import android.arch.lifecycle.Observer
 import android.support.v4.app.Fragment
 import android.view.View
-import com.thawzintoe.ptut.adrinkp.utils.ADrinkPApp
-import com.thawzintoe.ptut.adrinkp.utils.Error
+import com.mmgoogleexpert.ptut.shared.data.Error
 
 
 open class BaseFragment : Fragment(),Observer<Error> {

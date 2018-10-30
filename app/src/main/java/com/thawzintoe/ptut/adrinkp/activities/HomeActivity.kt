@@ -2,14 +2,19 @@ package com.thawzintoe.ptut.adrinkp.activities
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.view.menu.ActionMenuItemView
+import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import com.mmgoogleexpert.ptut.shared.ui.BaseActivity
 import com.thawzintoe.ptut.adrinkp.R
-import com.thawzintoe.ptut.adrinkp.activities.base.BaseActivity
 import com.thawzintoe.ptut.adrinkp.components.NavigationBottomSheet
 import com.thawzintoe.ptut.adrinkp.fragments.AlcoholFragment
 import com.thawzintoe.ptut.adrinkp.fragments.CategoryFragment
@@ -18,7 +23,8 @@ import com.thawzintoe.ptut.adrinkp.fragments.IngredientFragment
 import com.thawzintoe.ptut.adrinkp.utils.replaceFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity:BaseActivity() {
+
+class HomeActivity: BaseActivity() {
     private lateinit var transaction: FragmentTransaction
     private lateinit var fragment: Fragment
     private var fragmentIndex:Int=0
@@ -31,6 +37,7 @@ class HomeActivity:BaseActivity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -61,20 +68,10 @@ class HomeActivity:BaseActivity() {
         }
 
         searchFab.setOnClickListener{
-
-            startActivity(SearchCocktailActivity.newIntent(this))
+            presentActivity(it)
         }
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        switchFragmentPage(fragmentIndex)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        switchFragmentPage(fragmentIndex)
-    }
 
     private fun switchFragmentPage(index:Int){
         transaction = supportFragmentManager.beginTransaction()
@@ -98,6 +95,17 @@ class HomeActivity:BaseActivity() {
 
         }
 
+    }
+
+    private fun presentActivity(view: View) {
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, view, "transition")
+        val revealX = (view.x + view.width / 2).toInt()
+        val revealY = (view.y + view.height / 2).toInt()
+
+        val intent = Intent(this, SearchCocktailActivity::class.java)
+        intent.putExtra(SearchCocktailActivity.EXTRA_CIRCULAR_REVEAL_X, revealX)
+        intent.putExtra(SearchCocktailActivity.EXTRA_CIRCULAR_REVEAL_Y, revealY)
+        ActivityCompat.startActivity(this, intent, options.toBundle())
     }
 
 

@@ -3,18 +3,17 @@ package com.thawzintoe.ptut.adrinkp.models
 import android.arch.lifecycle.MutableLiveData
 import android.content.Context
 import com.thawzintoe.ptut.adrinkp.vos.filterList.DrinksCategoryFilter
-import com.thawzintoe.ptut.adrinkp.models.base.BaseModel
 import com.thawzintoe.ptut.adrinkp.network.response.GetCategoryFilterResponse
-import com.thawzintoe.ptut.adrinkp.utils.EmptyError
-import com.thawzintoe.ptut.adrinkp.utils.Error
-import com.thawzintoe.ptut.adrinkp.utils.NetworkError
+import com.mmgoogleexpert.ptut.shared.data.EmptyError
+import com.mmgoogleexpert.ptut.shared.data.Error
+import com.mmgoogleexpert.ptut.shared.data.NetworkError
 import com.thawzintoe.ptut.adrinkp.utils.scheduler
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class FilterModel private constructor(context: Context):BaseModel() {
+class FilterModel private constructor(context: Context): BaseModel() {
     companion object {
         var INSTANCE:FilterModel?=null
         fun getInstance():FilterModel{
@@ -48,12 +47,12 @@ class FilterModel private constructor(context: Context):BaseModel() {
                        if(getFilterResponse.drinks!!.isNotEmpty() ){
                            mFilterLD.value=getFilterResponse.drinks
                        }else{
-                           mErrorLD.value=EmptyError("No Data")
+                           mErrorLD.value= EmptyError("No Data")
                        }
                     }
 
                     override fun onError(e: Throwable) {
-                        mErrorLD.value=NetworkError(e.message!!)
+                        mErrorLD.value= NetworkError(e.message!!)
                     }
 
                 })
@@ -79,12 +78,12 @@ class FilterModel private constructor(context: Context):BaseModel() {
                         if(getFilterResponse.drinks!!.isNotEmpty() ){
                             mFilterLD.value=getFilterResponse.drinks
                         }else{
-                            mErrorLD.value=EmptyError("No Data")
+                            mErrorLD.value= EmptyError("No Data")
                         }
                     }
 
                     override fun onError(e: Throwable) {
-                        mErrorLD.value=NetworkError(e.message!!)
+                        mErrorLD.value= NetworkError(e.message!!)
                     }
 
                 })
@@ -108,12 +107,12 @@ class FilterModel private constructor(context: Context):BaseModel() {
                         if(getFilterResponse.drinks!!.isNotEmpty()){
                             mFilterLD.value=getFilterResponse.drinks
                         }else{
-                            mErrorLD.value=EmptyError("No Data")
+                            mErrorLD.value= EmptyError("No Data")
                         }
                     }
 
                     override fun onError(e: Throwable) {
-                        mErrorLD.value=NetworkError(e.message!!)
+                        mErrorLD.value= NetworkError(e.message!!)
                     }
 
                 })
@@ -137,12 +136,12 @@ class FilterModel private constructor(context: Context):BaseModel() {
                         if(getFilterResponse.drinks!!.isNotEmpty()){
                             mFilterLD.value=getFilterResponse.drinks
                         }else{
-                            mErrorLD.value=EmptyError("No Data")
+                            mErrorLD.value= EmptyError("No Data")
                         }
                     }
 
                     override fun onError(e: Throwable) {
-                        mErrorLD.value=NetworkError(e.message!!)
+                        mErrorLD.value= NetworkError(e.message!!)
                     }
 
                 })

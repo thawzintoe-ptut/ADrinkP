@@ -1,14 +1,15 @@
 package com.thawzintoe.ptut.adrinkp.activities
 
-import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.mmgoogleexpert.ptut.shared.data.EmptyError
+import com.mmgoogleexpert.ptut.shared.data.Error
+import com.mmgoogleexpert.ptut.shared.data.NetworkError
+import com.mmgoogleexpert.ptut.shared.ui.BaseActivity
 import com.thawzintoe.ptut.adrinkp.R
-import com.thawzintoe.ptut.adrinkp.activities.base.BaseActivity
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
 import com.thawzintoe.ptut.adrinkp.components.ImageRequester
 import com.thawzintoe.ptut.adrinkp.mvp.presenters.RandomPresenter
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_search_detail.*
 import kotlinx.android.synthetic.main.content_search_detail.*
 
 
-class RandomDrinkActivity :BaseActivity(),RandomView{
+class RandomDrinkActivity : BaseActivity(),RandomView{
 
     private  val mRandomPresenter:RandomPresenter by lazyAndroid {
         getViewModel<RandomPresenter>() }
@@ -41,7 +42,7 @@ class RandomDrinkActivity :BaseActivity(),RandomView{
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = ""
-        shimmerLayout.startShimmerAnimation()
+//        shimmerLayout.startShimmerAnimation()
 
         mRandomPresenter.initPresenter(this)
         mRandomPresenter.onNotifyRandom()
@@ -52,7 +53,7 @@ class RandomDrinkActivity :BaseActivity(),RandomView{
 
     }
     private fun setUpComponent(randomDrink:RandomDrinksItem) {
-        shimmerLayout.stopShimmerAnimation()
+//        shimmerLayout.stopShimmerAnimation()
         ImageRequester.setImageFromUrl(strThumb,randomDrink.strDrinkThumb!!)
         detailCategory.text = randomDrink.strDrink
         detailIBA.text=randomDrink.strCategory
@@ -155,5 +156,10 @@ class RandomDrinkActivity :BaseActivity(),RandomView{
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        startActivity(HomeActivity.newIntent(applicationContext, CATEGORY_INDEX))
+        finish()
     }
 }

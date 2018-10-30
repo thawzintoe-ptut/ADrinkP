@@ -1,10 +1,9 @@
-package com.thawzintoe.ptut.adrinkp.adapters.base
+package com.mmgoogleexpert.ptut.shared.ui
 
 import android.content.Context
+import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.widget.Filterable
-import com.thawzintoe.ptut.adrinkp.viewholders.base.BaseViewHolder
 import java.util.ArrayList
 
 abstract class BaseRecyclerAdapter<T, W>(context: Context) : RecyclerView.Adapter<BaseViewHolder<W>>() {
@@ -60,4 +59,6 @@ abstract class BaseRecyclerAdapter<T, W>(context: Context) : RecyclerView.Adapte
         mData = ArrayList()
         notifyDataSetChanged()
     }
+
+
 }

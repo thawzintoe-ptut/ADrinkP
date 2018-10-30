@@ -6,8 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.mmgoogleexpert.ptut.shared.data.EmptyError
+import com.mmgoogleexpert.ptut.shared.data.Error
+import com.mmgoogleexpert.ptut.shared.data.NetworkError
+import com.mmgoogleexpert.ptut.shared.ui.BaseActivity
 import com.thawzintoe.ptut.adrinkp.R
-import com.thawzintoe.ptut.adrinkp.activities.base.BaseActivity
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
 import com.thawzintoe.ptut.adrinkp.components.ImageRequester
 import com.thawzintoe.ptut.adrinkp.mvp.presenters.LookUpPresenter
@@ -17,7 +20,7 @@ import com.thawzintoe.ptut.adrinkp.vos.lookUpList.LookUpItem
 import kotlinx.android.synthetic.main.activity_search_detail.*
 import kotlinx.android.synthetic.main.content_search_detail.*
 
-class LookUpCocktailDetail:BaseActivity(),LookUpView {
+class LookUpCocktailDetail: BaseActivity(),LookUpView {
     private val mLookUpPresenter: LookUpPresenter by lazy {
         ViewModelProviders.of(this).get(LookUpPresenter::class.java)
     }
@@ -26,9 +29,10 @@ class LookUpCocktailDetail:BaseActivity(),LookUpView {
     }
 
     companion object {
-        fun newIntent(context: Context,id:String): Intent {
+        fun newIntent(context: Context,id:String,image:String): Intent {
             val intent= Intent(context, LookUpCocktailDetail::class.java)
             intent.putExtra(Detail_ID,id)
+            intent.putExtra(Detail_IMAGE,image)
             return intent
         }
     }
@@ -43,7 +47,8 @@ class LookUpCocktailDetail:BaseActivity(),LookUpView {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.title = ""
         val id=intent.getStringExtra(Detail_ID)
-        shimmerLayout.startShimmerAnimation()
+        val image=intent.getStringExtra(Detail_IMAGE)
+        ImageRequester.setImageFromUrl(strThumb,image)
 
         mLookUpPresenter.initPresenter(this)
         mLookUpPresenter.onNotifyLookUpDetail(id)
@@ -54,8 +59,8 @@ class LookUpCocktailDetail:BaseActivity(),LookUpView {
 
     }
     private fun setUpComponent(randomDrink:LookUpItem) {
-        shimmerLayout.stopShimmerAnimation()
-        ImageRequester.setImageFromUrl(strThumb,randomDrink.strDrinkThumb!!)
+
+
         detailCategory.text = randomDrink.strDrink
         detailIBA.text=randomDrink.strCategory
         detailDate.text = prettyTime(randomDrink.dateModified!!)

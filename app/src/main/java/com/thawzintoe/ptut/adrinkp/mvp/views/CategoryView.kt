@@ -1,7 +1,7 @@
 package com.thawzintoe.ptut.adrinkp.mvp.views
 
-import android.support.constraint.ConstraintLayout
+import com.mmgoogleexpert.ptut.shared.model.BaseView
 
-interface CategoryView :BaseView{
+interface CategoryView : BaseView {
     fun launchFilter(itemName:String)
 }

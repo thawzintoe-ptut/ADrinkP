@@ -1,4 +1,4 @@
-package com.thawzintoe.ptut.adrinkp.viewholders.base
+package com.mmgoogleexpert.ptut.shared.ui
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

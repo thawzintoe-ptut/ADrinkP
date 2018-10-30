@@ -1,4 +1,4 @@
-package com.thawzintoe.ptut.adrinkp.utils
+package com.mmgoogleexpert.ptut.shared.data
 
 sealed class Error
 data class EmptyError(val msg: String): Error()

@@ -6,14 +6,13 @@ import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksAlcohol
 import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksGlass
 import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksIngredient
 import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksItem
-import com.thawzintoe.ptut.adrinkp.models.base.BaseModel
 import com.thawzintoe.ptut.adrinkp.network.response.GetAlcoholResponse
 import com.thawzintoe.ptut.adrinkp.network.response.GetCategoryResponse
 import com.thawzintoe.ptut.adrinkp.network.response.GetGlassResponse
 import com.thawzintoe.ptut.adrinkp.network.response.GetIngredientResponse
-import com.thawzintoe.ptut.adrinkp.utils.EmptyError
-import com.thawzintoe.ptut.adrinkp.utils.Error
-import com.thawzintoe.ptut.adrinkp.utils.NetworkError
+import com.mmgoogleexpert.ptut.shared.data.EmptyError
+import com.mmgoogleexpert.ptut.shared.data.Error
+import com.mmgoogleexpert.ptut.shared.data.NetworkError
 import com.thawzintoe.ptut.adrinkp.utils.scheduler
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -52,11 +51,11 @@ class ItemListModel private constructor(context: Context) : BaseModel() {
                         if(getCategoryResponse.drinks!!.isNotEmpty()){
                             mDrinkItemLD.value=getCategoryResponse.drinks
                         }else{
-                            mErrorLD.value=EmptyError("No Data")
+                            mErrorLD.value= EmptyError("No Data")
                         }
                     }
                     override fun onError(e: Throwable) {
-                        mErrorLD.value=NetworkError(e.message!!)
+                        mErrorLD.value= NetworkError(e.message!!)
                     }
                 })
     }
@@ -76,11 +75,11 @@ class ItemListModel private constructor(context: Context) : BaseModel() {
                         if(getGlassResponse.drinks!!.isNotEmpty() && getGlassResponse!=null){
                             mDrinkItemLD.value=getGlassResponse.drinks
                         }else{
-                            mErrorLD.value=EmptyError("No Data")
+                            mErrorLD.value= EmptyError("No Data")
                         }
                     }
                     override fun onError(e: Throwable) {
-                        mErrorLD.value=NetworkError(e.message!!)
+                        mErrorLD.value= NetworkError(e.message!!)
                     }
                 })
     }
@@ -100,11 +99,11 @@ class ItemListModel private constructor(context: Context) : BaseModel() {
                         if(getIngredientResponse.drinks!!.isNotEmpty() && getIngredientResponse!=null){
                             mDrinkItemLD.value=getIngredientResponse.drinks
                         }else{
-                            mErrorLD.value=EmptyError("No Data")
+                            mErrorLD.value= EmptyError("No Data")
                         }
                     }
                     override fun onError(e: Throwable) {
-                        mErrorLD.value=NetworkError(e.message!!)
+                        mErrorLD.value= NetworkError(e.message!!)
                     }
                 })
     }
@@ -124,11 +123,11 @@ class ItemListModel private constructor(context: Context) : BaseModel() {
                         if(getAlcoholResponse.drinks!!.isNotEmpty() && getAlcoholResponse!=null){
                             mDrinkItemLD.value=getAlcoholResponse.drinks
                         }else{
-                            mErrorLD.value=EmptyError("No Data")
+                            mErrorLD.value= EmptyError("No Data")
                         }
                     }
                     override fun onError(e: Throwable) {
-                        mErrorLD.value=NetworkError(e.message!!)
+                        mErrorLD.value= NetworkError(e.message!!)
                     }
                 })
     }

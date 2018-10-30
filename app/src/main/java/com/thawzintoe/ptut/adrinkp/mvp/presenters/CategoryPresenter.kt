@@ -1,6 +1,7 @@
 package com.thawzintoe.ptut.adrinkp.mvp.presenters
 
 import android.arch.lifecycle.MutableLiveData
+import com.mmgoogleexpert.ptut.shared.model.BasePresenter
 import com.thawzintoe.ptut.adrinkp.deligate.onTapCategoryItem
 import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksAlcohol
 import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksGlass

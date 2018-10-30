@@ -8,10 +8,7 @@
     app:behavior_overlapTop="30dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <io.supercharge.shimmerlayout.ShimmerLayout
-        android:id="@+id/shimmerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -122,7 +119,7 @@
                         android:fontFamily="sans-serif-medium"
                         android:text="Instruction"
                         app:fontFamily="@font/quicksand_bold"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/md_700_bluegrey"
                         android:textSize="@dimen/text_regular_3x" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -163,7 +160,7 @@
                         android:paddingStart="@dimen/margin_small"
                         android:text="Ingredients"
                         app:fontFamily="@font/quicksand_bold"
-                        android:textColor="@color/blue"
+                        android:textColor="@color/md_700_bluegrey"
                         android:textSize="@dimen/text_regular_3x"
                         android:textStyle="bold" />
 
@@ -368,6 +365,5 @@
 
         </LinearLayout>
 
-    </io.supercharge.shimmerlayout.ShimmerLayout>
 
 </android.support.v4.widget.NestedScrollView>
