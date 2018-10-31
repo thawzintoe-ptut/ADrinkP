@@ -106,8 +106,6 @@ class CategoryFilterActivity : BaseActivity(), FilterView {
 
     override fun onBackPressed() {
         startActivity(HomeActivity.newIntent(applicationContext, CATEGORY_INDEX))
-        overridePendingTransition(R.anim.pop_enter, R.anim.pop_exit)
         finish()
-
     }
 }

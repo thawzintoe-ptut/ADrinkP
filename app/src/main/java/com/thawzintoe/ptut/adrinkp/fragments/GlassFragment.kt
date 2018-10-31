@@ -31,7 +31,7 @@ class GlassFragment :
 
     override fun launchFilter(itemName: String) {
         startActivity(CategoryFilterActivity.newIntent(context!!, itemName, GLASS_NAME))
-//        overridePendingTransition(R.anim.enter, R.anim.exit)
+//        overridePendingTransition(R.anim.left_enter, R.anim.left_exit)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

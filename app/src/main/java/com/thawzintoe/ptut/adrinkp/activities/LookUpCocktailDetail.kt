@@ -59,8 +59,6 @@ class LookUpCocktailDetail: BaseActivity(),LookUpView {
 
     }
     private fun setUpComponent(randomDrink:LookUpItem) {
-
-
         detailCategory.text = randomDrink.strDrink
         detailIBA.text=randomDrink.strCategory
         detailDate.text = prettyTime(randomDrink.dateModified!!)
