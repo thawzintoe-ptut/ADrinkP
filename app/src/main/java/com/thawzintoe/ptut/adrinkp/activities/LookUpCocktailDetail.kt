@@ -10,6 +10,7 @@ import com.mmgoogleexpert.ptut.shared.data.EmptyError
 import com.mmgoogleexpert.ptut.shared.data.Error
 import com.mmgoogleexpert.ptut.shared.data.NetworkError
 import com.mmgoogleexpert.ptut.shared.ui.BaseActivity
+import com.thawzintoe.ptut.adrinkp.Injection
 import com.thawzintoe.ptut.adrinkp.R
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
 import com.thawzintoe.ptut.adrinkp.components.ImageRequester
@@ -22,7 +23,9 @@ import kotlinx.android.synthetic.main.content_search_detail.*
 
 class LookUpCocktailDetail: BaseActivity(),LookUpView {
     private val mLookUpPresenter: LookUpPresenter by lazy {
-        ViewModelProviders.of(this).get(LookUpPresenter::class.java)
+        ViewModelProviders.of(this,
+                Injection.provideViewModelLookUp(LookUpPresenter()))
+                .get(LookUpPresenter::class.java)
     }
     private val emptyViewPod  by lazy{
         emptyDetail as EmptyViewPod

@@ -3,6 +3,7 @@ package com.thawzintoe.ptut.adrinkp.activities
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -27,6 +28,7 @@ import com.mmgoogleexpert.ptut.shared.data.EmptyError
 import com.mmgoogleexpert.ptut.shared.data.Error
 import com.mmgoogleexpert.ptut.shared.data.NetworkError
 import com.mmgoogleexpert.ptut.shared.ui.BaseActivity
+import com.thawzintoe.ptut.adrinkp.Injection
 import kotlinx.android.synthetic.main.activity_filter_view.*
 import kotlinx.android.synthetic.main.activity_search.*
 
@@ -39,7 +41,9 @@ open class SearchCocktailActivity : BaseActivity(), SearchView, View.OnClickList
     private var revealY: Int = 0
 
     private  val searchPresenter: SearchPresenter by lazyAndroid{
-       getViewModel<SearchPresenter>()
+      ViewModelProviders.of(this,
+              Injection.provideViewModelSearch(SearchPresenter()))
+              .get(SearchPresenter::class.java)
     }
     private val searchCocktailAdapter: SearchCocktailAdapter by lazyAndroid{
         SearchCocktailAdapter(this@SearchCocktailActivity, searchPresenter)
