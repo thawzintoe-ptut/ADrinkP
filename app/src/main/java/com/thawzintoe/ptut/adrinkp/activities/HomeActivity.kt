@@ -45,6 +45,7 @@ class HomeActivity: BaseActivity() {
         fragmentIndex=intent.getIntExtra("FragmentIndex",0)
         switchFragmentPage(fragmentIndex)
 
+
         bottomAppBar.replaceMenu(R.menu.category_item)
         bottomAppBar.setOnMenuItemClickListener{
              when(it.itemId){
@@ -75,6 +76,7 @@ class HomeActivity: BaseActivity() {
 
     private fun switchFragmentPage(index:Int){
         transaction = supportFragmentManager.beginTransaction()
+
         when(index){
             0->{
                 fragment=CategoryFragment()

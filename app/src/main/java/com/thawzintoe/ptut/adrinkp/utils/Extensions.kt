@@ -99,7 +99,8 @@ inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Fragmen
 
 
 fun AppCompatActivity.replaceFragment( frameId: Int,fragment: Fragment) {
-    supportFragmentManager.inTransaction{replace(frameId, fragment)}
+
+    supportFragmentManager.inTransaction{ replace(frameId, fragment)}
 }
 
 val Context.networkInfo: NetworkInfo? get() =

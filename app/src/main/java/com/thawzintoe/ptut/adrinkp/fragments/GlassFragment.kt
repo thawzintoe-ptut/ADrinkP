@@ -1,6 +1,7 @@
 package com.thawzintoe.ptut.adrinkp.fragments
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import com.mmgoogleexpert.ptut.shared.data.EmptyError
 import com.mmgoogleexpert.ptut.shared.data.Error
 import com.mmgoogleexpert.ptut.shared.data.NetworkError
 import com.mmgoogleexpert.ptut.shared.ui.BaseFragment
+import com.thawzintoe.ptut.adrinkp.Injection
 import com.thawzintoe.ptut.adrinkp.R
 import com.thawzintoe.ptut.adrinkp.activities.CategoryFilterActivity
 import com.thawzintoe.ptut.adrinkp.adapters.GlassItemsAdapter
@@ -23,7 +25,11 @@ import kotlinx.android.synthetic.main.content_category_item.*
 class GlassFragment :
         BaseFragment(),
         CategoryView {
-    private val categoryPresenter by lazyAndroid { getViewModel<CategoryPresenter>()}
+    private val categoryPresenter by lazyAndroid {
+        ViewModelProviders.of(this,
+                Injection.provideViewModelFactoryCategory(CategoryPresenter()))
+                .get(CategoryPresenter::class.java)
+    }
     private val glassAdapter by lazyAndroid {
         GlassItemsAdapter(context!!, categoryPresenter) }
     private val emptyViewPod  by lazyAndroid{
@@ -31,7 +37,7 @@ class GlassFragment :
 
     override fun launchFilter(itemName: String) {
         startActivity(CategoryFilterActivity.newIntent(context!!, itemName, GLASS_NAME))
-//        overridePendingTransition(R.anim.enter, R.anim.exit)
+//        overridePendingTransition(R.anim.left_enter, R.anim.left_exit)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

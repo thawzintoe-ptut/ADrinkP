@@ -2,7 +2,7 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     <objectAnimator
         android:interpolator="@android:interpolator/decelerate_quint"
-        android:valueFrom="0dp" android:valueTo="100dp"
+        android:valueFrom="0dp" android:valueTo="-100dp"
         android:valueType="floatType"
         android:propertyName="translationX"
         android:duration="@android:integer/config_mediumAnimTime" />

@@ -1,6 +1,7 @@
 package com.thawzintoe.ptut.adrinkp.activities
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +10,7 @@ import com.mmgoogleexpert.ptut.shared.data.EmptyError
 import com.mmgoogleexpert.ptut.shared.data.Error
 import com.mmgoogleexpert.ptut.shared.data.NetworkError
 import com.mmgoogleexpert.ptut.shared.ui.BaseActivity
+import com.thawzintoe.ptut.adrinkp.Injection
 import com.thawzintoe.ptut.adrinkp.R
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
 import com.thawzintoe.ptut.adrinkp.components.ImageRequester
@@ -23,7 +25,10 @@ import kotlinx.android.synthetic.main.content_search_detail.*
 class RandomDrinkActivity : BaseActivity(),RandomView{
 
     private  val mRandomPresenter:RandomPresenter by lazyAndroid {
-        getViewModel<RandomPresenter>() }
+        ViewModelProviders.of(this,
+                Injection.provideViewModelRandom(RandomPresenter()))
+                .get(RandomPresenter::class.java)
+    }
     private val emptyViewPod  by lazyAndroid{
         emptyDetail as EmptyViewPod }
 

@@ -2,6 +2,7 @@ package com.thawzintoe.ptut.adrinkp.activities
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -13,6 +14,7 @@ import com.mmgoogleexpert.ptut.shared.data.EmptyError
 import com.mmgoogleexpert.ptut.shared.data.Error
 import com.mmgoogleexpert.ptut.shared.data.NetworkError
 import com.mmgoogleexpert.ptut.shared.ui.BaseActivity
+import com.thawzintoe.ptut.adrinkp.Injection
 import com.thawzintoe.ptut.adrinkp.R
 import com.thawzintoe.ptut.adrinkp.adapters.CategoryFilterAdapter
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
@@ -25,7 +27,11 @@ import kotlinx.android.synthetic.main.activity_filter_view.*
 
 @SuppressLint("Registered")
 class CategoryFilterActivity : BaseActivity(), FilterView {
-    private val filterPresenter by lazyAndroid { getViewModel<FilterPresenter>() }
+    private val filterPresenter by lazyAndroid {
+        ViewModelProviders.of(this,
+                Injection.provideViewModelFactoryFilter(FilterPresenter()))
+                .get(FilterPresenter::class.java)
+    }
     private val categoryFilterAdapter by lazyAndroid { CategoryFilterAdapter(applicationContext, filterPresenter) }
     private val emptyViewPod by lazyAndroid {
         filterEmptyLayout as EmptyViewPod
@@ -106,8 +112,6 @@ class CategoryFilterActivity : BaseActivity(), FilterView {
 
     override fun onBackPressed() {
         startActivity(HomeActivity.newIntent(applicationContext, CATEGORY_INDEX))
-        overridePendingTransition(R.anim.pop_enter, R.anim.pop_exit)
         finish()
-
     }
 }
