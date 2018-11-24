@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.mmgoogleexpert.ptut.shared.data.EmptyError
 import com.mmgoogleexpert.ptut.shared.data.Error
 import com.mmgoogleexpert.ptut.shared.data.NetworkError
@@ -18,6 +19,7 @@ import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
 import com.thawzintoe.ptut.adrinkp.mvp.presenters.CategoryPresenter
 import com.thawzintoe.ptut.adrinkp.mvp.views.CategoryView
 import com.thawzintoe.ptut.adrinkp.utils.*
+import com.thawzintoe.ptut.adrinkp.utils.ADrinkPApp.Companion.mFirebaseAnalytics
 import com.thawzintoe.ptut.adrinkp.vos.categoryList.DrinksItem
 import kotlinx.android.synthetic.main.app_bar_category_item.*
 import kotlinx.android.synthetic.main.content_category_item.*
@@ -50,12 +52,14 @@ class CategoryFragment :
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+        setUpAnalytics("001","CategoryFragment","image")
         return container?.inflate(R.layout.activity_category_item)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpUIComponent()
+        mFirebaseAnalytics.setCurrentScreen(activity!!, "CurrentScreen: " + javaClass.simpleName, null)
     }
 
 
@@ -102,4 +106,6 @@ class CategoryFragment :
             }
         }
     }
+
+
 }

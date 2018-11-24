@@ -6,6 +6,13 @@
         android:id="@+id/action_random"
         android:title="Random"
         android:icon="@drawable/ic_shuffle"
-        app:showAsAction="always"/>
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/action_feedback"
+        android:title="Feedback"
+        android:icon="@drawable/ic_outline_feedback"
+        android:orderInCategory="200"
+        app:showAsAction="ifRoom"/>
 
 </menu>

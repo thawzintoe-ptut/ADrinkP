@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1088074137404",
+    "firebase_url": "https://adrink-21628.firebaseio.com",
+    "project_id": "adrink-21628",
+    "storage_bucket": "adrink-21628.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088074137404:android:328af7fc54013c29",
+        "android_client_info": {
+          "package_name": "com.thawzintoe.ptut.adrinkp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088074137404-u5378isgugc69nc95bnbt7bgr5qbpieb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thawzintoe.ptut.adrinkp",
+            "certificate_hash": "1630c3f09e2df5ef026e333e58adc0cf919b47aa"
+          }
+        },
+        {
+          "client_id": "1088074137404-s08q0hjqqfkrl85llieotbvhgrggelnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC3ceqq8MyK6tWHDH0qGGDqZBcO2no4ig"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088074137404-s08q0hjqqfkrl85llieotbvhgrggelnd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

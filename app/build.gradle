@@ -6,13 +6,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
 apply plugin: 'org.moallemi.advanced-build-version'
-
+apply plugin: 'com.google.gms.google-services'
 advancedVersioning {
     nameOptions {
-        versionMajor 0
+        versionMajor 1
         versionMinor 0
-        versionPatch 1
-        versionBuild 2
+        versionPatch 0
+        versionBuild 125195
     }
 
     codeOptions {
@@ -22,7 +22,7 @@ advancedVersioning {
 
     outputOptions {
         renameOutput true
-        nameFormat 'ADrinkTaLine-beta-${versionName}'
+        nameFormat 'ADrink-${versionName}'
     }
 }
 
@@ -104,6 +104,8 @@ dependencies {
     implementation 'io.supercharge:shimmerlayout:2.1.0'
     implementation 'com.android.volley:volley:1.1.0'
     implementation project(path: ':shared')
+
+    implementation 'com.google.firebase:firebase-core:16.0.1'
 }
 repositories {
     mavenCentral()

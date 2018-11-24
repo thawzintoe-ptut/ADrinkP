@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.thawzintoe.ptut.adrinkp.components.EmptyViewPod xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <TextView
+        android:id="@+id/emptyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ivEmpty"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/quicksand_bold"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/margin_medium" />
+
+    <ImageView
+        android:id="@+id/ivEmpty"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_search_any"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search Anything"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_regular_3x"
+        android:fontFamily="@font/quicksand_bold"
+        android:layout_below="@id/ivEmpty"
+        android:textColor="@color/md_500_bluegrey"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cocktail Preview"
+        android:textStyle="italic"
+        android:textSize="@dimen/text_regular"
+        android:layout_below="@id/tvEmpty"
+        android:layout_marginTop="@dimen/margin_small"
+        android:fontFamily="@font/quicksand_medium"
+        android:layout_centerHorizontal="true"
+        />
+
+
+</com.thawzintoe.ptut.adrinkp.components.EmptyViewPod>
