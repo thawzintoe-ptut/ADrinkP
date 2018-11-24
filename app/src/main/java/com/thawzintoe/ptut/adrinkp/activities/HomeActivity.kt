@@ -60,6 +60,21 @@ class HomeActivity: BaseActivity() {
                     })
                     true
                 }
+                 R.id.action_feedback->{
+                     AnimationUtils.loadAnimation(this, R.anim.bounce_animation).also { hyperspaceJumpAnimation ->
+                         findViewById<ActionMenuItemView>(R.id.action_feedback).startAnimation(hyperspaceJumpAnimation)
+                     }.setAnimationListener(object:Animation.AnimationListener{
+                         override fun onAnimationRepeat(p0: Animation?) {}
+                         override fun onAnimationEnd(p0: Animation?) {
+                             val feedbackEmail = Intent(Intent.ACTION_SEND)
+                             feedbackEmail.type = "text/email"
+                             feedbackEmail.putExtra(Intent.EXTRA_EMAIL, arrayOf("toezinthaw@gmail.com"))
+                             feedbackEmail.putExtra(Intent.EXTRA_SUBJECT, "Feedback")
+                             startActivity(Intent.createChooser(feedbackEmail, "Send Feedback:")) }
+                         override fun onAnimationStart(p0: Animation?) {}
+                     })
+                     true
+                 }
                 else -> { false }
             }
         }
@@ -110,5 +125,16 @@ class HomeActivity: BaseActivity() {
         ActivityCompat.startActivity(this, intent, options.toBundle())
     }
 
+    override fun onBackPressed() {
+        when(fragmentIndex){
+            0-> {
+                val a = Intent(Intent.ACTION_MAIN)
+                a.addCategory(Intent.CATEGORY_HOME)
+                a.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(a)
+            }
+        }
+
+    }
 
 }

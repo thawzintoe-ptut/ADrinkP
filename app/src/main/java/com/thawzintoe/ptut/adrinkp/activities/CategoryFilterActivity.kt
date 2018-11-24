@@ -49,10 +49,15 @@ class CategoryFilterActivity : BaseActivity(), FilterView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_filter_view)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(toolbarFilter)
 
         val filterName: String = intent.getStringExtra(FILTER_NAME)
         toolbar_title.text = filterName
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbarFilter.setNavigationOnClickListener{
+            onBackPressed()
+        }
+
         val fromFilter: String = intent.getStringExtra(Filter_FROM)
         onFinishUI(filterName, fromFilter)
 

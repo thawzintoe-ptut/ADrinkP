@@ -7,6 +7,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
@@ -21,6 +22,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.thawzintoe.ptut.adrinkp.R
 import com.thawzintoe.ptut.adrinkp.components.EmptyViewPod
 import com.thawzintoe.ptut.adrinkp.components.SmartRecyclerView
@@ -99,7 +101,6 @@ inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Fragmen
 
 
 fun AppCompatActivity.replaceFragment( frameId: Int,fragment: Fragment) {
-
     supportFragmentManager.inTransaction{ replace(frameId, fragment)}
 }
 
@@ -108,4 +109,12 @@ val Context.networkInfo: NetworkInfo? get() =
 
 fun  SimpleDateFormat.formatOf(string: String):SimpleDateFormat{
     return SimpleDateFormat("MMM d, yyyy", Locale.US)
+}
+
+ fun setUpAnalytics(id:String,name:String,type:String){
+    val bundle = Bundle()
+    bundle.putString(FirebaseAnalytics.Param.ITEM_ID, id)
+    bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, name)
+    bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, type)
+    ADrinkPApp.mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
 }

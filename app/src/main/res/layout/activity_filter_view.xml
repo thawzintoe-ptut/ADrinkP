@@ -15,7 +15,7 @@
         app:elevation="0dp">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarFilter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin_medium"
                 android:fontFamily="@font/quicksand_bold"
-                android:gravity="center"
+                android:gravity="left"
                 android:padding="@dimen/margin_medium"
                 android:text="Oridinary drink"
                 android:textColor="@color/black_light"

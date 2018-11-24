@@ -14,8 +14,8 @@
 
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/strThumb"
-            android:layout_width="125dp"
-            android:layout_height="140dp"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:layout_alignParentStart="true"
             android:scaleType="centerCrop"

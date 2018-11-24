@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ADrinkTaLine</string>
+    <string name="app_name">ADrink</string>
     <string name="name">ADrink</string>
     <string name="title_activity_category_item">CategoryItemActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

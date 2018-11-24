@@ -28,7 +28,7 @@
         android:id="@+id/searchFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:backgroundTint="@color/blue"
+        app:backgroundTint="@color/red_500"
         app:fabSize="normal"
         app:layout_anchor="@id/bottomAppBar"
         app:srcCompat="@drawable/ic_search" />
